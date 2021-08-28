@@ -4,17 +4,27 @@ import java.util.Scanner;
 
 public class ConsolaHamburguesas {
 	//Atributos
-	private Restaurante restaurante; 
+	private Restaurante restaurante;
+	
+	//Metodo constructor
+	
+	public ConsolaHamburguesas() {
+		restaurante = new Restaurante();
+	}
 	
 	//Metodo main
 	public static void main(String[] args) {
 		System.out.println("BIENVENIDO A LA HAMBURGUESERIA.");
 		ConsolaHamburguesas interfaz = new ConsolaHamburguesas();
-		interfaz.mostrarOpciones();
-		Scanner input = new Scanner(System.in);
-		int opcionSeleccionada = input.nextInt();
-		interfaz.ejecutarOpcion(opcionSeleccionada);
-
+		interfaz.restaurante.cargarCombos();
+		interfaz.restaurante.cargarIngredientes();
+		interfaz.restaurante.cargarMenu();
+		while (true) {
+			interfaz.mostrarOpciones();
+			Scanner input = new Scanner(System.in);
+			int opcionSeleccionada = input.nextInt();
+			interfaz.ejecutarOpcion(opcionSeleccionada);
+		}
 	}
 
 	//Metodos
@@ -33,6 +43,14 @@ public class ConsolaHamburguesas {
 	}
 	
 	public void ejecutarOpcion(int opcionSeleccionada) {
+		switch (opcionSeleccionada) {		
+		case 1: mostrarMenu();
+		case 2: ;
+		case 3: ;
+		case 4: ;
+		case 5: ;
+		default: System.out.println("Ingrese una opcion valida.");
+		}
 		
 	}
 }

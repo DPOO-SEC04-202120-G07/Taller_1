@@ -15,5 +15,18 @@ public class Restaurante {
 	public Restaurante() {
 		
 	}
+	
+	public void cargarCombos() {
+		
+	}
+	
+	public void cargarIngredientes() {
+		
+	}
+	
+	public void cargarMenu() {
+		
+	}
+	
 
 }
