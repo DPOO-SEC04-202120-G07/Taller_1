@@ -1,5 +1,9 @@
 package uniandes.dpoo.consola;
 import uniandes.dpoo.modelo.*;
+import uniandes.dpoo.procesamiento.*;
+
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ConsolaHamburguesas {
@@ -16,9 +20,7 @@ public class ConsolaHamburguesas {
 	public static void main(String[] args) {
 		System.out.println("BIENVENIDO A LA HAMBURGUESERIA.");
 		ConsolaHamburguesas interfaz = new ConsolaHamburguesas();
-		interfaz.restaurante.cargarCombos();
-		interfaz.restaurante.cargarIngredientes();
-		interfaz.restaurante.cargarMenu();
+		interfaz.restaurante.cargarInformacionRestaurante(new File("data/ingredientes.txt"),new File("data/menu.txt"), new File("data/combos.txt"));
 		while (true) {
 			interfaz.mostrarOpciones();
 			Scanner input = new Scanner(System.in);
@@ -39,6 +41,11 @@ public class ConsolaHamburguesas {
 	}
 	
 	public void mostrarMenu() {
+		ArrayList<Producto> menu = restaurante.getMenuBase();
+		for (int i=0; i<menu.size(); i++) {
+			System.out.println(menu.get(i).getNombre()+"--- $"+menu.get(i).getPrecio()+"\n");
+		}
+		
 		
 	}
 	
