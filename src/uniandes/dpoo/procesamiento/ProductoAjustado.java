@@ -10,6 +10,8 @@ public class ProductoAjustado implements Producto{
 	//Metodo constructor
 	public ProductoAjustado(ProductoMenu base) {
 		this.base=base;
+		agregados = new ArrayList<Ingrediente>();
+		eliminados = new ArrayList<Ingrediente>();
 	}
 
 	//Metodos
