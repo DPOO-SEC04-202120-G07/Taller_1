@@ -54,9 +54,9 @@ public class Restaurante {
 	}
 
 
-	public HashMap<String, ProductoMenu> getMenuBase(){
+	public ArrayList<ProductoMenu> getMenuBase(){
 
-		return this.menuBase;
+		return new ArrayList<ProductoMenu>(this.menuBase.values());
 
 	}
 
@@ -76,9 +76,9 @@ public class Restaurante {
 
 	public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos) {
 
-		this.cargarCombos(archivoCombos);
 		this.cargarIngredientes(archivoIngredientes);
 		this.cargarMenu(archivoMenu);
+		this.cargarCombos(archivoCombos);
 
 	}
 
@@ -100,18 +100,16 @@ public class Restaurante {
 		try {
 			br = new BufferedReader(new FileReader(archivoMenu));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		String linea = null;
 		try {
 			linea = br.readLine();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 
-		while (!linea.equals(null)) // Cuando se llegue al final del archivo, linea tendrá el valor null
+		while (linea != null) // Cuando se llegue al final del archivo, linea tendrá el valor null
 		{
 			String[] data_menu = linea.split(";");
 
@@ -120,6 +118,12 @@ public class Restaurante {
 
 			ProductoMenu productoMenu = new ProductoMenu(nombre_producto, valor_producto);
 			this.menuBase.put(nombre_producto, productoMenu);
+			try {
+				linea=br.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
 
 		}
 
@@ -140,24 +144,22 @@ public class Restaurante {
 		try {
 			br = new BufferedReader(new FileReader(archivoCombos));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		String linea = null;
 		try {
 			linea = br.readLine();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 
-		while (!linea.equals(null)) // Cuando se llegue al final del archivo, linea tendrá el valor null
+		while (linea != null) // Cuando se llegue al final del archivo, linea tendrá el valor null
 		{
 			String[] data_combo = linea.split(";");
 			int size_data_combo = data_combo.length;
 
 			String nombre_combo = data_combo[0];
-			double descuento_combo = Double.parseDouble(data_combo[1].replace("","%")) /100;
+			double descuento_combo = Double.parseDouble(data_combo[1].replace("%","")) /100;
 
 			Combo combo = new Combo(nombre_combo, descuento_combo);
 
@@ -172,6 +174,12 @@ public class Restaurante {
 			}
 
 			this.combos.add(combo);
+			try {
+				linea=br.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
 
 
 		}
@@ -185,18 +193,16 @@ public class Restaurante {
 		try {
 			br = new BufferedReader(new FileReader(archivoIngredientes));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		String linea = null;
 		try {
 			linea = br.readLine();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 
-		while (!linea.equals(null)) // Cuando se llegue al final del archivo, linea tendrá el valor null
+		while (linea != null) // Cuando se llegue al final del archivo, linea tendrá el valor null
 		{
 			String[] data_ingrediente = linea.split(";");
 			int size_data_ingrediente = data_ingrediente.length;
@@ -206,6 +212,11 @@ public class Restaurante {
 
 			Ingrediente ingrediente = new Ingrediente(nombre_ingrediente, precio_ingredient);
 			this.ingredientes.add(ingrediente);
+			try {
+				linea=br.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
 		}
 	}

@@ -18,7 +18,7 @@ public class ConsolaHamburguesas {
 	
 	//Metodo main
 	public static void main(String[] args) {
-		System.out.println("BIENVENIDO A LA HAMBURGUESERIA.");
+		System.out.println("BIENVENIDO A LA HAMBURGUESERIA 'Hola Mundo'.");
 		ConsolaHamburguesas interfaz = new ConsolaHamburguesas();
 		interfaz.restaurante.cargarInformacionRestaurante(new File("data/ingredientes.txt"),new File("data/menu.txt"), new File("data/combos.txt"));
 		while (true) {
@@ -41,15 +41,15 @@ public class ConsolaHamburguesas {
 	}
 	
 	public void mostrarMenu() {
-		ArrayList<Producto> menuBase = restaurante.getMenuBase();
-		ArrayList<Producto> combos = restaurante.getCombos();
+		ArrayList<ProductoMenu> menuBase = restaurante.getMenuBase();
+		ArrayList<Combo> combos = restaurante.getCombos();
 		
 		for (int i=0; i<menuBase.size(); i++) {
-			System.out.println(menuBase.get(i).getNombre()+"--- $"+menuBase.get(i).getPrecio()+"\n");
+			System.out.println(menuBase.get(i).getNombre()+" --- $"+menuBase.get(i).getPrecio()+"\n");
 		}
 		
 		for (int i=0; i<combos.size(); i++) {
-			System.out.println(combos.get(i).getNombre()+"--- $"+combos.get(i).getPrecio()+"\n");
+			System.out.println(combos.get(i).getNombre()+" --- $"+combos.get(i).getPrecio()+"\n");
 		}
 		
 	}
