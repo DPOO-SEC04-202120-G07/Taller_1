@@ -13,6 +13,8 @@ public class Combo implements Producto{
 
 		this.nombreCombo = nombre;
 		this.descuento = descuento;
+		this.itemsCombo = new ArrayList<ProductoMenu>();
+		
 	}
 	
 
