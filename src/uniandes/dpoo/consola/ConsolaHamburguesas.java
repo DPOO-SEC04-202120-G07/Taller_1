@@ -71,8 +71,18 @@ public class ConsolaHamburguesas {
 				restaurante.IniciarPedido(nombre, direccion);
 				break;
 				
-		case 3: ;
-		case 4: ;
+		case 3: Scanner input_3 = new Scanner(System.in);
+				System.out.println("Ingrese el Id del producto/combo que desea ordenar: ");
+				int producto_pedido_id = input_3.nextInt();
+				String producto_agregado = restaurante.agregarProductoAlPedido(producto_pedido_id);
+				System.out.println("Has agregado el producto: " + producto_agregado);
+				break;
+				
+		case 4: int id_factura = restaurante.getPedidoEnCurso().getIdPedido();
+				System.out.println("Felicitaciones, ha completado su orden. Puede buscar su factura con el ID único de pedido #"+ id_factura + ".");
+				restaurante.cerrarYGuardarPedido();
+				break;
+				
 		case 5: ;
 		default: System.out.println("Ingrese una opcion valida.");
 		}

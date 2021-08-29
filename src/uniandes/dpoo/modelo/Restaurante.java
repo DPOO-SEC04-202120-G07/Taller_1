@@ -18,7 +18,7 @@ public class Restaurante {
 	private HashMap<String,ProductoMenu> menuBase;
 	private ArrayList<Combo> combos;
 	
-	private HashMap<Integer,ProductoMenu> menuBaseId;
+	private HashMap<Integer,Producto> productosId;
 	
 	private int id_asignado = 0;
 
@@ -29,7 +29,7 @@ public class Restaurante {
 		this.ingredientes = new ArrayList<Ingrediente>();
 		this.menuBase = new HashMap<String, ProductoMenu>();
 		this.combos = new ArrayList<Combo>();
-		this.menuBaseId = new HashMap<Integer,ProductoMenu>();
+		this.productosId = new HashMap<Integer,Producto>();
 		
 	}
 
@@ -44,7 +44,7 @@ public class Restaurante {
 
 	public void cerrarYGuardarPedido() {
 
-		String nombre_factura = "" + pedidoEnCurso.getIdPedido();
+		String nombre_factura = "" + pedidoEnCurso.getIdPedido() + ".txt";
 		File factura = new File(nombre_factura);
 
 		this.pedidoEnCurso.guardarFactura(factura);
@@ -124,7 +124,7 @@ public class Restaurante {
 
 			ProductoMenu productoMenu = new ProductoMenu(nombre_producto, valor_producto, asignarId());
 			this.menuBase.put(nombre_producto, productoMenu);
-			this.menuBaseId.put(this.id_asignado, productoMenu);
+			this.productosId.put(this.id_asignado, productoMenu);
 			
 			try {
 				linea=br.readLine();
@@ -182,6 +182,7 @@ public class Restaurante {
 			}
 
 			this.combos.add(combo);
+			this.productosId.put(this.id_asignado, combo);
 			try {
 				linea=br.readLine();
 			} catch (IOException e) {
@@ -227,6 +228,17 @@ public class Restaurante {
 			}
 
 		}
+	}
+	
+	
+	public String agregarProductoAlPedido(int id_producto) {
+		
+		
+		Producto producto_agregado = this.productosId.get(id_producto);
+		this.pedidoEnCurso.agregarProducto(producto_agregado);
+		String nombre_producto = producto_agregado.getNombre();
+		
+		return nombre_producto;
 	}
 	
 	public int asignarId() {
