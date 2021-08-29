@@ -71,10 +71,11 @@ public class ConsolaHamburguesas {
 				System.out.println("Ingrese su direccion: ");
 				String direccion = input_2.nextLine();
 				restaurante.IniciarPedido(nombre, direccion);
+				System.out.println("La ID de su pedido es: "+restaurante.getPedidoEnCurso().getIdPedido());
 				break;
 				
 		case 3: Scanner input_3 = new Scanner(System.in);
-				System.out.println("Ingrese el Id del producto/combo que desea ordenar: ");
+				System.out.println("Ingrese el ID del producto/combo que desea ordenar: ");
 				int producto_pedido_id = input_3.nextInt();
 				String producto_agregado = restaurante.agregarProductoAlPedido(producto_pedido_id);
 				if (producto_agregado.equals("N/A")) System.out.println("Ingrese un ID valido.");

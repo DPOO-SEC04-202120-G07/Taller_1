@@ -20,7 +20,7 @@ public class Restaurante {
 	
 	private HashMap<Integer,Producto> productosId;
 	
-	private int id_asignado = 0;
+	private int id_asignado;
 
 	//Metodo Constructor
 	public Restaurante() {
@@ -30,6 +30,7 @@ public class Restaurante {
 		this.menuBase = new HashMap<String, ProductoMenu>();
 		this.combos = new ArrayList<Combo>();
 		this.productosId = new HashMap<Integer,Producto>();
+		this.id_asignado=0;
 		
 	}
 

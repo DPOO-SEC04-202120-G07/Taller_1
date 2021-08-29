@@ -71,7 +71,7 @@ public class Pedido {
 		}
 
 		try {
-			out_file.write(this.generarTextoFactura());
+			out_file.write("Cliente: "+this.nombreCliente+"--- Direccion: "+this.direccionCliente+"\n"+this.generarTextoFactura());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
