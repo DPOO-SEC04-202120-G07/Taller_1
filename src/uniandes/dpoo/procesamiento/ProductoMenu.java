@@ -20,11 +20,10 @@ public class ProductoMenu implements Producto{
 		return this.nombre;
 	}
 	
-	public String generarTextoFactura(double descuento) {
-		double precioDescuento = (precioBase-precioBase*descuento);
-		double iva=precioDescuento*0.19;
-		double precioTotal=precioDescuento+iva;
-		System.out.println(nombre +"| Precio base: "+ precioBase+"| Precio con descuento: "+precioDescuento +"| IVA (19%): "+iva+"| Precio total: " +precioTotal );
+	public String generarTextoFactura() {
+		double iva=precioBase*0.19;
+		double precioTotal=precioBase+iva;
+		System.out.println(nombre +"| Precio base: "+ precioBase+"| IVA (19%): "+iva+"| Precio total: " +precioTotal );
 		return "";
 	}
 
