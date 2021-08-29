@@ -25,6 +25,7 @@ public class ConsolaHamburguesas {
 			interfaz.mostrarOpciones();
 			Scanner input = new Scanner(System.in);
 			int opcionSeleccionada = input.nextInt();
+			if (opcionSeleccionada==6) break;
 			interfaz.ejecutarOpcion(opcionSeleccionada);
 		}
 	}
@@ -36,6 +37,7 @@ public class ConsolaHamburguesas {
 		System.out.println("3. Agregar un elemento a un pedido.");
 		System.out.println("4. Cerrar un pedido y guardar la factura.");
 		System.out.println("5. Consultar informacion de un pedido.");
+		System.out.println("6. Salir.");
 		System.out.println("Seleccione una de las anteriores opciones: ");
 		
 	}
