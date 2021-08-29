@@ -1,5 +1,7 @@
 package uniandes.dpoo.modelo;
 import uniandes.dpoo.procesamiento.*;
+
+import java.io.File;
 import java.util.ArrayList;
 
 public class Restaurante {
@@ -16,16 +18,51 @@ public class Restaurante {
 		
 	}
 	
-	public void cargarCombos() {
+	
+	//Métodos públicos
+	public void IniciarPedido(String nombreCliente, String direccionCliente) {
 		
 		
 	}
 	
-	public void cargarIngredientes() {
+	public void cerrarYGuardarPedido() {
 		
 	}
 	
-	public void cargarMenu() {
+	
+	public Pedido getPedidoEnCurso() {
+		
+	}
+	
+	
+	public ArrayList<Producto> getMenuBase(){
+		
+	}
+	
+	public ArrayList<Ingrediente> getIngredientes(){
+		
+	}
+	
+	public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos) {
+		
+	}
+	
+	
+	
+	
+	
+	
+	//Métodos privados
+	private void cargarCombos(File archivoCombos) {
+		
+		
+	}
+	
+	private void cargarIngredientes(File archivoIngredientes) {
+		
+	}
+	
+	private void cargarMenu(File archivoMenu) {
 		
 	}
 	
