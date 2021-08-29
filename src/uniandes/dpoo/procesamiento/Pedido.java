@@ -25,6 +25,14 @@ public class Pedido {
 
 	//Metodos
 	
+	public Producto ultimoProducto() {
+		return itemsPedido.get(itemsPedido.size()-1);
+	}
+	
+	public void modificarUltimoProducto(Producto modificar) {
+		itemsPedido.set(itemsPedido.size()-1, modificar);
+	}
+	
 	public String getNombreCliente() {
 		return this.nombreCliente;
 	}

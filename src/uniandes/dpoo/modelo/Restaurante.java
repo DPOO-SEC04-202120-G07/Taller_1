@@ -14,23 +14,27 @@ public class Restaurante {
 	//Atributos
 	private Pedido pedidoEnCurso;
 	private ArrayList<Pedido> pedidos;
-	private ArrayList<Ingrediente> ingredientes;
+	private HashMap<String,Ingrediente> ingredientes;
 	private HashMap<String,ProductoMenu> menuBase;
 	private ArrayList<Combo> combos;
 	
 	private HashMap<Integer,Producto> productosId;
+	private HashMap<Integer, Ingrediente> productosIdIngrediente;
 	
 	private int id_asignado;
+	private int id_asignadoIngrediente;
 
 	//Metodo Constructor
 	public Restaurante() {
 
 		this.pedidos = new ArrayList<Pedido>();
-		this.ingredientes = new ArrayList<Ingrediente>();
+		this.ingredientes = new HashMap<String,Ingrediente>();
 		this.menuBase = new HashMap<String, ProductoMenu>();
 		this.combos = new ArrayList<Combo>();
 		this.productosId = new HashMap<Integer,Producto>();
+		this.productosIdIngrediente= new HashMap<Integer, Ingrediente>();
 		this.id_asignado=0;
+		this.id_asignadoIngrediente=0;
 		
 	}
 
@@ -66,6 +70,12 @@ public class Restaurante {
 		return new ArrayList<ProductoMenu>(this.menuBase.values());
 
 	}
+	
+	public ArrayList<Ingrediente> getIngredientes(){
+
+		return new ArrayList<Ingrediente>(this.ingredientes.values());
+
+	}
 
 
 	public ArrayList<Combo> getCombos(){
@@ -75,11 +85,6 @@ public class Restaurante {
 	}
 
 
-	public ArrayList<Ingrediente> getIngredientes(){
-
-		return this.ingredientes;
-
-	}
 
 	public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos) {
 
@@ -103,7 +108,6 @@ public class Restaurante {
 
 
 	public String agregarProductoAlPedido(int id_producto) {
-		
 		Producto producto_agregado = this.productosId.get(id_producto);
 		if (producto_agregado == null) return ("N/A");
 		this.pedidoEnCurso.agregarProducto(producto_agregado);
@@ -112,9 +116,42 @@ public class Restaurante {
 		return nombre_producto;
 	}
 	
+	public String eliminarIngrediente(int producto_id, int eliminar) {
+		ProductoAjustado nuevoProducto;
+		if (this.pedidoEnCurso.ultimoProducto().getClass().getName().equals("uniandes.dpoo.procesamiento.ProductoAjustado")) {
+			nuevoProducto = (ProductoAjustado)this.pedidoEnCurso.ultimoProducto();
+		}else {
+			nuevoProducto = new ProductoAjustado((ProductoMenu)this.pedidoEnCurso.ultimoProducto());
+		}
+		nuevoProducto.eliminarIngrediente(this.productosIdIngrediente.get(eliminar));
+		this.pedidoEnCurso.modificarUltimoProducto(nuevoProducto);
+		return nuevoProducto.getNombre();
+	}
+	
+	public String ultimoProductoType() {
+		return this.pedidoEnCurso.ultimoProducto().getClass().getName();
+	}
+	public String agregarIngrediente(int producto_id, int agregar) {
+		ProductoAjustado NuevoProducto;
+		if (this.pedidoEnCurso.ultimoProducto().getClass().getName().equals("uniandes.dpoo.procesamiento.ProductoAjustado")) {
+			NuevoProducto = (ProductoAjustado)this.pedidoEnCurso.ultimoProducto();
+		}else {
+			NuevoProducto = new ProductoAjustado((ProductoMenu)this.pedidoEnCurso.ultimoProducto());
+		}
+		NuevoProducto.agregarIngrediente(this.productosIdIngrediente.get(agregar));
+		this.pedidoEnCurso.modificarUltimoProducto(NuevoProducto);
+		return NuevoProducto.getNombre();
+	}
+	
 	public int asignarId() {
 		this.id_asignado += 1;
 		return this.id_asignado;
+		
+	}
+	
+	public int asignarIdIngrediente() {
+		this.id_asignadoIngrediente += 1;
+		return this.id_asignadoIngrediente;
 		
 	}
 
@@ -240,13 +277,13 @@ public class Restaurante {
 		while (linea != null) // Cuando se llegue al final del archivo, linea tendrá el valor null
 		{
 			String[] data_ingrediente = linea.split(";");
-			int size_data_ingrediente = data_ingrediente.length;
 
 			String nombre_ingrediente = data_ingrediente[0];
 			int precio_ingredient = Integer.parseInt(data_ingrediente[1]);
 
-			Ingrediente ingrediente = new Ingrediente(nombre_ingrediente, precio_ingredient);
-			this.ingredientes.add(ingrediente);
+			Ingrediente ingrediente = new Ingrediente(nombre_ingrediente, precio_ingredient, asignarIdIngrediente());
+			this.ingredientes.put(nombre_ingrediente, ingrediente);
+			this.productosIdIngrediente.put(this.id_asignadoIngrediente, ingrediente);
 			try {
 				linea=br.readLine();
 			} catch (IOException e) {

@@ -15,6 +15,14 @@ public class ProductoAjustado implements Producto{
 	}
 
 	//Metodos
+	
+	public void eliminarIngrediente(Ingrediente eliminar) {
+		eliminados.add(eliminar);
+	}
+	
+	public void agregarIngrediente(Ingrediente agregar) {
+		agregados.add(agregar);
+	}
 	public int getPrecio() {
 		int precio=base.getPrecio();
 		for (int i=0; i<agregados.size();i++) {

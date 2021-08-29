@@ -48,16 +48,23 @@ public class ConsolaHamburguesas {
 		
 		for (int i=0; i<menuBase.size(); i++) {
 
-			System.out.println("Id:" + menuBase.get(i).getId()+ ") " + menuBase.get(i).getNombre()+" --- $"+menuBase.get(i).getPrecio()+"\n");
+			System.out.println("ID:" + menuBase.get(i).getId()+ ") " + menuBase.get(i).getNombre()+" --- $"+menuBase.get(i).getPrecio()+"\n");
 
 		}
 		
 		for (int i=0; i<combos.size(); i++) {
 
-			System.out.println("Id:" + combos.get(i).getId()+ ") " + combos.get(i).getNombre()+" --- $"+combos.get(i).getPrecio()+"\n");
+			System.out.println("ID:" + combos.get(i).getId()+ ") " + combos.get(i).getNombre()+" --- $"+combos.get(i).getPrecio()+"\n");
 
 		}
 		
+	}
+	
+	public void mostrarIngredientes() {
+		ArrayList<Ingrediente> ingredientes = restaurante.getIngredientes();
+		for (int i=0; i<ingredientes.size(); i++) {
+			System.out.println("ID:" + ingredientes.get(i).getId()+ ") " + ingredientes.get(i).getNombre()+" --- $"+ingredientes.get(i).getCostoAdicional()+"\n");
+		}
 	}
 	
 	public void ejecutarOpcion(int opcionSeleccionada) {
@@ -76,10 +83,34 @@ public class ConsolaHamburguesas {
 				
 		case 3: Scanner input_3 = new Scanner(System.in);
 				System.out.println("Ingrese el ID del producto/combo que desea ordenar: ");
-				int producto_pedido_id = input_3.nextInt();
+				int producto_pedido_id = input_3.nextInt();			
 				String producto_agregado = restaurante.agregarProductoAlPedido(producto_pedido_id);
 				if (producto_agregado.equals("N/A")) System.out.println("Ingrese un ID valido.");
 				else System.out.println("Has agregado el producto: " + producto_agregado);
+				while (true && !restaurante.ultimoProductoType().equals("uniandes.dpoo.procesamiento.Combo")) {
+					System.out.println("Desea modificar el producto?");
+					System.out.println("1. Eliminar ingredientes.");
+					System.out.println("2. Agregar ingredientes.");
+					System.out.println("3. No modificar.");
+					int modificacion = input_3.nextInt();
+					if (modificacion==1) {
+						mostrarIngredientes();
+						System.out.println("Ingrese el ID del ingrediente que quiere eliminar: ");
+						int eliminar = input_3.nextInt();
+						String nombreActual=restaurante.eliminarIngrediente(producto_pedido_id, eliminar);
+						System.out.println("Tu producto actualmente es: "+nombreActual);
+					}else if (modificacion==2) {
+						mostrarIngredientes();
+						System.out.println("Ingrese el ID del ingrediente que quiere agregar: ");
+						int agregar = input_3.nextInt();
+						String nombreActual=restaurante.agregarIngrediente(producto_pedido_id, agregar);
+						System.out.println("Tu producto actualmente es: "+nombreActual);
+					}else if (modificacion == 3) {
+						break;
+					}else {
+						System.out.println("Ingrese una opcion valida.");
+					}
+				}
 				break;
 				
 		case 4: int id_factura = restaurante.getPedidoEnCurso().getIdPedido();

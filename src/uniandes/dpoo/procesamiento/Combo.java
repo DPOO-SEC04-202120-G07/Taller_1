@@ -74,7 +74,7 @@ public class Combo implements Producto{
 			}
 		
 		
-		factura_combo += ("| Precio Combo (neto)" + this.nombreCombo + ": " + precio_combo + "|Iva (19%): " + iva_combo + "| Precio total: " + precio_combo_total);
+		factura_combo += ("| Precio Combo (neto) " + this.nombreCombo + ": " + precio_combo + "|Iva (19%): " + iva_combo + "| Precio total: " + precio_combo_total);
 		
 		return factura_combo;
 		
