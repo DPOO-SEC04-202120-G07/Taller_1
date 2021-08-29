@@ -1,5 +1,8 @@
 package uniandes.dpoo.procesamiento;
 import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 public class Pedido {
 	//Atributos
@@ -53,6 +56,24 @@ public class Pedido {
 			textoFactura+=itemsPedido.get(i).generarTextoFactura()+"\n";
 		}
 		return textoFactura;
+	}
+	
+	public void guardarFactura(File archivo) {
+		PrintWriter out_file=null;
+		try {
+			out_file = new PrintWriter(archivo);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		
+		if (!out_file.equals(null)) {
+			out_file.println(generarTextoFactura());
+		}else {
+			System.out.println("No se ha podido guardar la factura.");
+		}
+		
+		
 	}
 	
 	
