@@ -16,12 +16,17 @@ public class Restaurante {
 	//Metodo Constructor
 	public Restaurante() {
 		
+		this.pedidos = new ArrayList<Pedido>();
+		this.ingredientes = new ArrayList<Ingrediente>();
+		this.menuBase = new ArrayList<ProductoMenu>();
+		this.combos = new ArrayList<Combo>();
 	}
 	
 	
 	//Métodos públicos
 	public void IniciarPedido(String nombreCliente, String direccionCliente) {
 		
+		pedidoEnCurso = new Pedido(nombreCliente, direccionCliente);
 		
 	}
 	
