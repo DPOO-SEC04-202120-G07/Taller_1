@@ -29,6 +29,8 @@ public class Restaurante {
 		this.ingredientes = new ArrayList<Ingrediente>();
 		this.menuBase = new HashMap<String, ProductoMenu>();
 		this.combos = new ArrayList<Combo>();
+		this.menuBaseId = new HashMap<Integer,ProductoMenu>();
+		
 	}
 
 

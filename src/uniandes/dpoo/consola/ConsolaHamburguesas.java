@@ -48,15 +48,11 @@ public class ConsolaHamburguesas {
 
 			System.out.println("Id:" + menuBase.get(i).getId()+ ") " + menuBase.get(i).getNombre()+" --- $"+menuBase.get(i).getPrecio()+"\n");
 
-			System.out.println(menuBase.get(i).getNombre()+" --- $"+menuBase.get(i).getPrecio());
-
 		}
 		
 		for (int i=0; i<combos.size(); i++) {
 
 			System.out.println("Id:" + combos.get(i).getId()+ ") " + combos.get(i).getNombre()+" --- $"+combos.get(i).getPrecio()+"\n");
-
-			System.out.println(combos.get(i).getNombre()+" --- $"+combos.get(i).getPrecio());
 
 		}
 		
@@ -65,12 +61,16 @@ public class ConsolaHamburguesas {
 	public void ejecutarOpcion(int opcionSeleccionada) {
 		switch (opcionSeleccionada) {		
 		case 1: mostrarMenu();
+				break;
+		
 		case 2: Scanner input_2 = new Scanner(System.in);
 				System.out.println("Ingrese su nombre: ");
 				String nombre = input_2.nextLine();
 				System.out.println("Ingrese su direccion: ");
 				String direccion = input_2.nextLine();
 				restaurante.IniciarPedido(nombre, direccion);
+				break;
+				
 		case 3: ;
 		case 4: ;
 		case 5: ;
