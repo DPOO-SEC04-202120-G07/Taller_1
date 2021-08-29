@@ -32,7 +32,7 @@ public class ConsolaHamburguesas {
 
 	//Metodos
 	public void mostrarOpciones() {
-		System.out.println("1. Mostrar el menú.");
+		System.out.println("\n1. Mostrar el menú.");
 		System.out.println("2. Iniciar un nuevo pedido.");
 		System.out.println("3. Agregar un elemento a un pedido.");
 		System.out.println("4. Cerrar un pedido y guardar la factura.");
@@ -77,7 +77,8 @@ public class ConsolaHamburguesas {
 				System.out.println("Ingrese el Id del producto/combo que desea ordenar: ");
 				int producto_pedido_id = input_3.nextInt();
 				String producto_agregado = restaurante.agregarProductoAlPedido(producto_pedido_id);
-				System.out.println("Has agregado el producto: " + producto_agregado);
+				if (producto_agregado.equals("N/A")) System.out.println("Ingrese un ID valido.");
+				else System.out.println("Has agregado el producto: " + producto_agregado);
 				break;
 				
 		case 4: int id_factura = restaurante.getPedidoEnCurso().getIdPedido();

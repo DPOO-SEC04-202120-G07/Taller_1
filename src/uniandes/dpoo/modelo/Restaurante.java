@@ -235,6 +235,7 @@ public class Restaurante {
 		
 		
 		Producto producto_agregado = this.productosId.get(id_producto);
+		if (producto_agregado == null) return ("N/A");
 		this.pedidoEnCurso.agregarProducto(producto_agregado);
 		String nombre_producto = producto_agregado.getNombre();
 		
