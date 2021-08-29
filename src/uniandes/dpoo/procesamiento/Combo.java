@@ -17,7 +17,6 @@ public class Combo implements Producto{
 		
 	}
 	
-
 	//Métodos públicos
 	public void agregarItemACombo(ProductoMenu itemCombo) {
 
