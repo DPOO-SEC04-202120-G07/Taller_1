@@ -41,11 +41,16 @@ public class ConsolaHamburguesas {
 	}
 	
 	public void mostrarMenu() {
-		ArrayList<Producto> menu = restaurante.getMenuBase();
-		for (int i=0; i<menu.size(); i++) {
-			System.out.println(menu.get(i).getNombre()+"--- $"+menu.get(i).getPrecio()+"\n");
+		ArrayList<Producto> menuBase = restaurante.getMenuBase();
+		ArrayList<Producto> combos = restaurante.getCombos();
+		
+		for (int i=0; i<menuBase.size(); i++) {
+			System.out.println(menuBase.get(i).getNombre()+"--- $"+menuBase.get(i).getPrecio()+"\n");
 		}
 		
+		for (int i=0; i<combos.size(); i++) {
+			System.out.println(combos.get(i).getNombre()+"--- $"+combos.get(i).getPrecio()+"\n");
+		}
 		
 	}
 	
