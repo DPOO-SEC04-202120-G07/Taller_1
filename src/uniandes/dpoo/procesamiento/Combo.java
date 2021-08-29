@@ -50,15 +50,28 @@ public class Combo implements Producto{
 	public String generarTextoFactura() {
 		
 		Iterator<ProductoMenu> iter_products = itemsCombo.iterator();
-		String factura_combo;
+		String factura_combo = "";
+		
+		int precio_combo = getPrecio();
+		double iva_combo = precio_combo*0.19;
+		double precio_combo_total = precio_combo + iva_combo;
 
 		while(iter_products.hasNext()) {
 
 			ProductoMenu producto_actual = iter_products.next();
-			String factura_producto = producto_actual.generarTextoFactura(descuento);
+			
+			int precio_base = producto_actual.getPrecio();
+			double precio_descuento = precio_base - (precio_base * descuento);
+			double iva= precio_descuento * 0.19;
+			double precioTotal= precio_descuento + iva;
+			
+			String factura_producto = (producto_actual.getNombre() + "| Precio base: "+ precio_base + "| Precio con descuento: "+ precio_descuento +"| IVA (19%): "+iva+"| Precio total: " + precioTotal);
 
 			factura_combo += factura_producto + "\n";
 			}
+		
+		
+		factura_combo += ("| Precio Combo " + this.nombreCombo + ": " + precio_combo + "|Iva (19%): " + iva_combo + "| Precio neto total: " + precio_combo_total);
 		
 		return factura_combo;
 		
