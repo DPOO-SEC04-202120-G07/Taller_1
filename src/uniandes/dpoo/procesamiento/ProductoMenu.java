@@ -23,7 +23,7 @@ public class ProductoMenu implements Producto{
 	public String generarTextoFactura() {
 		double iva=precioBase*0.19;
 		double precioTotal=precioBase+iva;
-		return nombre +"| Precio base: "+ precioBase+"| IVA (19%): "+iva+"| Precio total: " +precioTotal ;
+		return nombre +"| Precio neto base: "+ precioBase+"| IVA (19%): "+iva+"| Precio total: " +precioTotal ;
 	}
 
 }
