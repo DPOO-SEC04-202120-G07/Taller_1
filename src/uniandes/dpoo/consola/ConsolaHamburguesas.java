@@ -45,11 +45,19 @@ public class ConsolaHamburguesas {
 		ArrayList<Combo> combos = restaurante.getCombos();
 		
 		for (int i=0; i<menuBase.size(); i++) {
+<<<<<<< HEAD
 			System.out.println("Id:" + menuBase.get(i).getId()+ ") " + menuBase.get(i).getNombre()+" --- $"+menuBase.get(i).getPrecio()+"\n");
+=======
+			System.out.println(menuBase.get(i).getNombre()+" --- $"+menuBase.get(i).getPrecio());
+>>>>>>> branch 'master' of https://github.com/DPOO-SEC04-202120-G07/Taller_1.git
 		}
 		
 		for (int i=0; i<combos.size(); i++) {
+<<<<<<< HEAD
 			System.out.println("Id:" + combos.get(i).getId()+ ") " + combos.get(i).getNombre()+" --- $"+combos.get(i).getPrecio()+"\n");
+=======
+			System.out.println(combos.get(i).getNombre()+" --- $"+combos.get(i).getPrecio());
+>>>>>>> branch 'master' of https://github.com/DPOO-SEC04-202120-G07/Taller_1.git
 		}
 		
 	}
@@ -57,7 +65,14 @@ public class ConsolaHamburguesas {
 	public void ejecutarOpcion(int opcionSeleccionada) {
 		switch (opcionSeleccionada) {		
 		case 1: mostrarMenu();
-		case 2: ;
+		case 2: Scanner input_2 = new Scanner(System.in);
+				System.out.println("Ingrese su nombre: ");
+				String nombre = input_2.nextLine();
+				System.out.println("Ingrese su direccion: ");
+				String direccion = input_2.nextLine();
+				System.out.println("Ingrese el ID de su pedido: ");
+				int pedido = input_2.nextInt();
+				restaurante.IniciarPedido(nombre, direccion, pedido);
 		case 3: ;
 		case 4: ;
 		case 5: ;
