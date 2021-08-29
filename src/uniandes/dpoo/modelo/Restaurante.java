@@ -17,6 +17,10 @@ public class Restaurante {
 	private ArrayList<Ingrediente> ingredientes;
 	private HashMap<String,ProductoMenu> menuBase;
 	private ArrayList<Combo> combos;
+	
+	private HashMap<Integer,ProductoMenu> menuBaseId;
+	
+	private int id_asignado = 0;
 
 	//Metodo Constructor
 	public Restaurante() {
@@ -116,8 +120,10 @@ public class Restaurante {
 			String nombre_producto = data_menu[0];
 			int valor_producto = Integer.parseInt(data_menu[1]);
 
-			ProductoMenu productoMenu = new ProductoMenu(nombre_producto, valor_producto);
+			ProductoMenu productoMenu = new ProductoMenu(nombre_producto, valor_producto, asignarId());
 			this.menuBase.put(nombre_producto, productoMenu);
+			this.menuBaseId.put(this.id_asignado, productoMenu);
+			
 			try {
 				linea=br.readLine();
 			} catch (IOException e) {
@@ -161,7 +167,7 @@ public class Restaurante {
 			String nombre_combo = data_combo[0];
 			double descuento_combo = Double.parseDouble(data_combo[1].replace("%","")) /100;
 
-			Combo combo = new Combo(nombre_combo, descuento_combo);
+			Combo combo = new Combo(nombre_combo, descuento_combo, asignarId());
 
 			//FALTA CARGAR ITEMS AL COMBO
 			for (int i = 2; i < (size_data_combo); i++) {
@@ -219,6 +225,13 @@ public class Restaurante {
 			}
 
 		}
+	}
+	
+	public int asignarId() {
+		
+		this.id_asignado += 1;
+		return this.id_asignado;
+		
 	}
 }
 

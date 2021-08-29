@@ -4,11 +4,13 @@ public class ProductoMenu implements Producto{
 	//Atributos
 	private String nombre;
 	private int precioBase;
+	private int id;
 	
 	//Metodo constructor
-	public ProductoMenu(String nombre, int precioBase) {
+	public ProductoMenu(String nombre, int precioBase, int id) {
 		this.nombre=nombre;
 		this.precioBase=precioBase;
+		this.id = id;
 		
 	}
 	//Metodos
@@ -18,6 +20,10 @@ public class ProductoMenu implements Producto{
 	
 	public String getNombre() {
 		return this.nombre;
+	}
+	
+	public int getId() {
+		return this.id;
 	}
 	
 	public String generarTextoFactura() {

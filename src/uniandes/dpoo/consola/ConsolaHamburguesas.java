@@ -31,7 +31,7 @@ public class ConsolaHamburguesas {
 
 	//Metodos
 	public void mostrarOpciones() {
-		System.out.println("1. Mostrar el menú.");
+		System.out.println("1. Mostrar el menÃº.");
 		System.out.println("2. Iniciar un nuevo pedido.");
 		System.out.println("3. Agregar un elemento a un pedido.");
 		System.out.println("4. Cerrar un pedido y guardar la factura.");
@@ -45,11 +45,11 @@ public class ConsolaHamburguesas {
 		ArrayList<Combo> combos = restaurante.getCombos();
 		
 		for (int i=0; i<menuBase.size(); i++) {
-			System.out.println(menuBase.get(i).getNombre()+" --- $"+menuBase.get(i).getPrecio()+"\n");
+			System.out.println("Id:" + menuBase.get(i).getId()+ ") " + menuBase.get(i).getNombre()+" --- $"+menuBase.get(i).getPrecio()+"\n");
 		}
 		
 		for (int i=0; i<combos.size(); i++) {
-			System.out.println(combos.get(i).getNombre()+" --- $"+combos.get(i).getPrecio()+"\n");
+			System.out.println("Id:" + combos.get(i).getId()+ ") " + combos.get(i).getNombre()+" --- $"+combos.get(i).getPrecio()+"\n");
 		}
 		
 	}

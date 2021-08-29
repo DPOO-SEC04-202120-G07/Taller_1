@@ -7,12 +7,14 @@ public class Combo implements Producto{
 	private double descuento;
 	private String nombreCombo;
 	private ArrayList<ProductoMenu> itemsCombo;
+	private int id;
 
 	//Método constructor
-	public Combo(String nombre, double descuento) {
+	public Combo(String nombre, double descuento, int id) {
 
 		this.nombreCombo = nombre;
 		this.descuento = descuento;
+		this.id = id;
 		this.itemsCombo = new ArrayList<ProductoMenu>();
 		
 	}
@@ -77,6 +79,11 @@ public class Combo implements Producto{
 		return factura_combo;
 		
 		
+		
+	}
+	
+	public int getId() {
+		return this.id;
 		
 	}
 
