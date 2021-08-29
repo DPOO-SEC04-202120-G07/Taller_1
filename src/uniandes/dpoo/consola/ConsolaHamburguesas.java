@@ -70,8 +70,6 @@ public class ConsolaHamburguesas {
 				String nombre = input_2.nextLine();
 				System.out.println("Ingrese su direccion: ");
 				String direccion = input_2.nextLine();
-				System.out.println("Ingrese el ID de su pedido: ");
-				int pedido = input_2.nextInt();
 				restaurante.IniciarPedido(nombre, direccion);
 		case 3: ;
 		case 4: ;
