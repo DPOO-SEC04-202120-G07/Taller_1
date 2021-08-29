@@ -98,13 +98,15 @@ public class ConsolaHamburguesas {
 						System.out.println("Ingrese el ID del ingrediente que quiere eliminar: ");
 						int eliminar = input_3.nextInt();
 						String nombreActual=restaurante.eliminarIngrediente(producto_pedido_id, eliminar);
-						System.out.println("Tu producto actualmente es: "+nombreActual);
+						if (nombreActual == "N/A") System.out.println("Ingrese una opcion valida.");
+						else System.out.println("Tu producto actualmente es: "+nombreActual);
 					}else if (modificacion==2) {
 						mostrarIngredientes();
 						System.out.println("Ingrese el ID del ingrediente que quiere agregar: ");
 						int agregar = input_3.nextInt();
 						String nombreActual=restaurante.agregarIngrediente(producto_pedido_id, agregar);
-						System.out.println("Tu producto actualmente es: "+nombreActual);
+						if (nombreActual == "N/A") System.out.println("Ingrese una opcion valida.");
+						else System.out.println("Tu producto actualmente es: "+nombreActual);
 					}else if (modificacion == 3) {
 						break;
 					}else {

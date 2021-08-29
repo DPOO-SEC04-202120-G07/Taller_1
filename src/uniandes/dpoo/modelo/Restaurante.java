@@ -123,6 +123,7 @@ public class Restaurante {
 		}else {
 			nuevoProducto = new ProductoAjustado((ProductoMenu)this.pedidoEnCurso.ultimoProducto());
 		}
+		if (this.productosIdIngrediente.get(eliminar)==null) return "N/A";
 		nuevoProducto.eliminarIngrediente(this.productosIdIngrediente.get(eliminar));
 		this.pedidoEnCurso.modificarUltimoProducto(nuevoProducto);
 		return nuevoProducto.getNombre();
@@ -138,6 +139,7 @@ public class Restaurante {
 		}else {
 			NuevoProducto = new ProductoAjustado((ProductoMenu)this.pedidoEnCurso.ultimoProducto());
 		}
+		if (this.productosIdIngrediente.get(agregar)==null) return "N/A";
 		NuevoProducto.agregarIngrediente(this.productosIdIngrediente.get(agregar));
 		this.pedidoEnCurso.modificarUltimoProducto(NuevoProducto);
 		return NuevoProducto.getNombre();
