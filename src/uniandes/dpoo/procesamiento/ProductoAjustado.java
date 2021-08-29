@@ -16,15 +16,28 @@ public class ProductoAjustado implements Producto{
 
 	//Metodos
 	public int getPrecio() {
-		return base.getPrecio();
+		int precio=base.getPrecio();
+		for (int i=0; i<agregados.size();i++) {
+			precio+=agregados.get(i).getCostoAdicional();
+		}
+		return precio;
 	}
 	
 	public String getNombre() {
-		return base.getNombre();
+		String nombre=base.getNombre();
+		for (int i=0; i<agregados.size();i++) {
+			nombre+=" con "+agregados.get(i).getNombre();
+		}
+		for (int i=0; i<eliminados.size();i++) {
+			nombre+=" sin "+eliminados.get(i).getNombre();
+		}
+		return nombre;
 	}
 	
 	public String generarTextoFactura() {
-		return base.generarTextoFactura();
+		double iva=this.getPrecio()*0.19;
+		double precioTotal=this.getPrecio()+iva;
+		return this.getNombre() +"| Precio neto base: "+ this.getPrecio()+"| IVA (19%): "+iva+"| Precio total: " +precioTotal ;
 	}
 
 }
