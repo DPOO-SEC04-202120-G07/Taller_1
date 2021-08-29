@@ -24,6 +24,15 @@ public class Pedido {
 	}
 
 	//Metodos
+	
+	public String getNombreCliente() {
+		return this.nombreCliente;
+	}
+	
+	public String getDireccionCliente() {
+		return this.direccionCliente;
+	}
+	
 	public int getIdPedido() {
 		return this.idPedido;
 	}
@@ -52,7 +61,7 @@ public class Pedido {
 		return getPrecioNetoPedido()+getPrecioIVAPedido();
 	}
 
-	private String generarTextoFactura() {
+	public String generarTextoFactura() {
 		String textoFactura="";
 		for (int i=0; i<itemsPedido.size();i++) {
 			textoFactura+=itemsPedido.get(i).generarTextoFactura()+"\n";
@@ -71,7 +80,7 @@ public class Pedido {
 		}
 
 		try {
-			out_file.write("Cliente: "+this.nombreCliente+"--- Direccion: "+this.direccionCliente+"\n"+this.generarTextoFactura());
+			out_file.write("Cliente: "+this.nombreCliente+" --- Direccion: "+this.direccionCliente+"\n"+this.generarTextoFactura());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

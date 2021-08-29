@@ -87,7 +87,14 @@ public class ConsolaHamburguesas {
 				restaurante.cerrarYGuardarPedido();
 				break;
 				
-		case 5: ;
+		case 5: Scanner input_4 = new Scanner (System.in);
+				System.out.println("Ingrese el ID del pedido que quiere consultar: ");
+				int pedido_id = input_4.nextInt();
+				String pedido_info=restaurante.informacionPedido(pedido_id);
+				if (pedido_info.equals("N/A")) System.out.println("No se ha encontrado dicho pedido, ingrese una ID valida.");
+				else System.out.println(pedido_info);
+				break;
+				
 		default: System.out.println("Ingrese una opcion valida.");
 		}
 		

@@ -88,8 +88,35 @@ public class Restaurante {
 		this.cargarCombos(archivoCombos);
 
 	}
+	
+	public String informacionPedido(int id_pedido) {
+		String info="N/A";
+		for (int i=0; i<this.pedidos.size(); i++) {
+			if (pedidos.get(i).getIdPedido()==id_pedido) {
+				info="Cliente: "+pedidos.get(i).getNombreCliente()+" --- Direccion: "+pedidos.get(i).getDireccionCliente()+"\n" + pedidos.get(i).generarTextoFactura();
+				break;
+			}
+		}
+			
+		return info;
+	}
 
 
+	public String agregarProductoAlPedido(int id_producto) {
+		
+		Producto producto_agregado = this.productosId.get(id_producto);
+		if (producto_agregado == null) return ("N/A");
+		this.pedidoEnCurso.agregarProducto(producto_agregado);
+		String nombre_producto = producto_agregado.getNombre();
+		
+		return nombre_producto;
+	}
+	
+	public int asignarId() {
+		this.id_asignado += 1;
+		return this.id_asignado;
+		
+	}
 
 
 
@@ -141,9 +168,7 @@ public class Restaurante {
 
 	}
 
-
-
-
+	
 
 
 	private void cargarCombos(File archivoCombos) {
@@ -232,23 +257,7 @@ public class Restaurante {
 	}
 	
 	
-	public String agregarProductoAlPedido(int id_producto) {
-		
-		
-		Producto producto_agregado = this.productosId.get(id_producto);
-		if (producto_agregado == null) return ("N/A");
-		this.pedidoEnCurso.agregarProducto(producto_agregado);
-		String nombre_producto = producto_agregado.getNombre();
-		
-		return nombre_producto;
-	}
 	
-	public int asignarId() {
-		
-		this.id_asignado += 1;
-		return this.id_asignado;
-		
-	}
 }
 
 
