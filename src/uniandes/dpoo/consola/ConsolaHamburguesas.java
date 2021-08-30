@@ -84,14 +84,22 @@ public class ConsolaHamburguesas {
 		case 1: mostrarMenu();
 				break;
 		
-		case 2: Scanner input_2 = new Scanner(System.in);
-				System.out.println("Ingrese su nombre: ");
-				String nombre = input_2.nextLine();
-				System.out.println("Ingrese su direccion: ");
-				String direccion = input_2.nextLine();
-				restaurante.IniciarPedido(nombre, direccion);
-				System.out.println("La ID de su pedido es: "+restaurante.getPedidoEnCurso().getIdPedido());
-				break;
+		case 2: 
+				if(restaurante.verificarPedido()) {System.out.println("En este momento ya existe un pedido abierto, cierre el pedido antes de iniciar uno nuevo.");}
+				
+				else {
+					
+					Scanner input_2 = new Scanner(System.in);
+					System.out.println("Ingrese su nombre: ");
+					String nombre = input_2.nextLine();
+					System.out.println("Ingrese su direccion: ");
+					String direccion = input_2.nextLine();
+					
+					restaurante.IniciarPedido(nombre, direccion);
+					System.out.println("La ID de su pedido es: "+restaurante.getPedidoEnCurso().getIdPedido());	}
+				
+				break;					
+			
 				
 		case 3: Scanner input_3 = new Scanner(System.in);
 				System.out.println("Ingrese el ID del producto/combo que desea ordenar: ");

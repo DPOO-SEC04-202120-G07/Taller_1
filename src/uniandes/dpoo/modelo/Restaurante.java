@@ -46,10 +46,21 @@ public class Restaurante {
 
 	//Métodos públicos
 	public void IniciarPedido(String nombreCliente, String direccionCliente) {
-
+		
 		pedidoEnCurso = new Pedido(nombreCliente, direccionCliente);
 		pedidos.add(pedidoEnCurso);
 
+	}
+	
+	public boolean verificarPedido() {
+		
+		boolean pedido_abierto = true;
+		
+		if (this.pedidoEnCurso == null) {
+			pedido_abierto = false;
+		}
+		
+		return pedido_abierto;
 	}
 
 	public void cerrarYGuardarPedido() {
