@@ -26,7 +26,7 @@ public class ConsolaHamburguesas {
 			@SuppressWarnings("resource")
 			Scanner input = new Scanner(System.in);
 			int opcionSeleccionada = input.nextInt();
-			if (opcionSeleccionada==6) break;
+			if (opcionSeleccionada==7) break;
 			interfaz.ejecutarOpcion(opcionSeleccionada);
 		}
 	}
@@ -150,6 +150,7 @@ public class ConsolaHamburguesas {
 				if (pedido_info.equals("N/A")) System.out.println("No se ha encontrado dicho pedido, ingrese una ID valida.");
 				else System.out.println(pedido_info);
 				break;
+				
 				
 		default: System.out.println("Ingrese una opcion valida.");
 		}
