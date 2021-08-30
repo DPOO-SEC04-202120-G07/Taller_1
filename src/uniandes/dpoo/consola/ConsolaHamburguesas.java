@@ -85,8 +85,9 @@ public class ConsolaHamburguesas {
 				System.out.println("Ingrese el ID del producto/combo que desea ordenar: ");
 				int producto_pedido_id = input_3.nextInt();			
 				String producto_agregado = restaurante.agregarProductoAlPedido(producto_pedido_id);
-				if (producto_agregado.equals("N/A")) System.out.println("Ingrese un ID valido.");
-				else System.out.println("Has agregado el producto: " + producto_agregado);
+				if (producto_agregado.equals("N/A")) { System.out.println("Ingrese un ID valido.");}
+				else if (producto_agregado.equals("N/P")) {System.out.println("No se encuentra un pedido activo. !Recuerde iniciar un nuevo pedido!");}
+				else {System.out.println("Has agregado el producto: " + producto_agregado);
 				while (true && !restaurante.ultimoProductoType().equals("uniandes.dpoo.procesamiento.Combo")) {
 					System.out.println("Desea modificar el producto?");
 					System.out.println("1. Eliminar ingredientes.");
@@ -112,7 +113,7 @@ public class ConsolaHamburguesas {
 					}else {
 						System.out.println("Ingrese una opcion valida.");
 					}
-				}
+				}}
 				break;
 				
 		case 4: int id_factura = restaurante.getPedidoEnCurso().getIdPedido();

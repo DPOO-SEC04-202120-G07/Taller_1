@@ -45,7 +45,7 @@ public class ProductoAjustado implements Producto{
 	public String generarTextoFactura() {
 		double iva=this.getPrecio()*0.19;
 		double precioTotal=this.getPrecio()+iva;
-		return this.getNombre() +"| Precio neto base: "+ this.getPrecio()+"| IVA (19%): "+iva+"| Precio total: " +precioTotal ;
+		return this.getNombre() +"| Precio neto base: "+ this.getPrecio()+"$" +"| IVA (19%): "+iva+"$" +"| Precio total: " +precioTotal + "$" +"\n" + new String(new char[120]).replace("\0", "-") + "\n";
 	}
 
 }

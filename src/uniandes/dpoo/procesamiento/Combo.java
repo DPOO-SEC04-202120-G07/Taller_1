@@ -68,13 +68,13 @@ public class Combo implements Producto{
 			double iva= precio_descuento * 0.19;
 			double precioTotal= precio_descuento + iva;
 			
-			String factura_producto = (producto_actual.getNombre() + "| Precio base: "+ precio_base + "| Precio neto con descuento: "+ precio_descuento +"| IVA (19%): "+iva+"| Precio total: " + precioTotal);
+			String factura_producto = ("		" + producto_actual.getNombre() + "| Precio base: "+ precio_base +"$" + "| Precio neto con descuento: "+ precio_descuento +"$" +"| IVA (19%): "+iva+"$" +"| Precio total: " + precioTotal +"$" );
 
 			factura_combo += factura_producto + "\n";
 			}
 		
 		
-		factura_combo += ("| Precio Combo (neto) " + this.nombreCombo + ": " + precio_combo + "|Iva (19%): " + iva_combo + "| Precio total: " + precio_combo_total);
+		factura_combo += ("\n" + this.nombreCombo + "| Precio Combo (neto): " + precio_combo +"$" + "|Iva (19%): " + iva_combo +"$" + "| Precio total: " + precio_combo_total) + "$" + "\n" + new String(new char[120]).replace("\0", "-") + "\n";
 		
 		return factura_combo;
 		

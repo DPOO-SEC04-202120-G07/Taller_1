@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Restaurante {
 
 	//Atributos
-	private Pedido pedidoEnCurso;
+	private Pedido pedidoEnCurso = null;
 	private ArrayList<Pedido> pedidos;
 	private HashMap<String,Ingrediente> ingredientes;
 	private HashMap<String,ProductoMenu> menuBase;
@@ -98,7 +98,7 @@ public class Restaurante {
 		String info="N/A";
 		for (int i=0; i<this.pedidos.size(); i++) {
 			if (pedidos.get(i).getIdPedido()==id_pedido) {
-				info="Cliente: "+pedidos.get(i).getNombreCliente()+" --- Direccion: "+pedidos.get(i).getDireccionCliente()+"\n" + pedidos.get(i).generarTextoFactura();
+				info="Cliente: "+pedidos.get(i).getNombreCliente()+" --- Direccion: "+pedidos.get(i).getDireccionCliente()+"\n" +  new String(new char[120]).replace("\0", "-") + "\n" + new String(new char[120]).replace("\0", "-") + "\n" +  pedidos.get(i).generarTextoFactura();
 				break;
 			}
 		}
@@ -109,7 +109,13 @@ public class Restaurante {
 
 	public String agregarProductoAlPedido(int id_producto) {
 		Producto producto_agregado = this.productosId.get(id_producto);
-		if (producto_agregado == null) return ("N/A");
+		
+		//Excepción producto no existente (id inválido)
+		if (producto_agregado == null) {return ("N/A");}
+		
+		//Excepción pedido no iniciado.
+		if (this.pedidoEnCurso == null) {return ("N/P");}
+		
 		this.pedidoEnCurso.agregarProducto(producto_agregado);
 		String nombre_producto = producto_agregado.getNombre();
 		

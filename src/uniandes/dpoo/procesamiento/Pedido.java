@@ -88,7 +88,8 @@ public class Pedido {
 		}
 
 		try {
-			out_file.write("Cliente: "+this.nombreCliente+" --- Direccion: "+this.direccionCliente+"\n"+this.generarTextoFactura());
+			out_file.write("Cliente: "+this.nombreCliente+" --- Direccion: "+this.direccionCliente+"\n"+  new String(new char[120]).replace("\0", "-") + "\n" + new String(new char[120]).replace("\0", "-") + "\n" + this.generarTextoFactura());
+			out_file.write(new String(new char[120]).replace("\0", "#")  + "\n" +  "| Precio neto: " + getPrecioNetoPedido() + "$" + "| IVA del pedido: " + getPrecioIVAPedido() +"$" +"| Precio total (con IVA): " + getPrecioTotalPedido() +"$" + "\n" + new String(new char[120]).replace("\0", "#"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
