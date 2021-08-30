@@ -23,6 +23,7 @@ public class ConsolaHamburguesas {
 		interfaz.restaurante.cargarInformacionRestaurante(new File("data/ingredientes.txt"),new File("data/menu.txt"), new File("data/combos.txt"));
 		while (true) {
 			interfaz.mostrarOpciones();
+			@SuppressWarnings("resource")
 			Scanner input = new Scanner(System.in);
 			int opcionSeleccionada = input.nextInt();
 			if (opcionSeleccionada==6) break;
@@ -77,6 +78,7 @@ public class ConsolaHamburguesas {
 			
 			else {
 				
+				@SuppressWarnings("resource")
 				Scanner input_2 = new Scanner(System.in);
 				System.out.println("Ingrese su nombre: ");
 				String nombre = input_2.nextLine();
