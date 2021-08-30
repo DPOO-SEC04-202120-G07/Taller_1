@@ -6,7 +6,7 @@ public class Combo implements Producto{
 	//Atributos
 	private double descuento;
 	private String nombreCombo;
-	private ArrayList<ProductoMenu> itemsCombo;
+	private ArrayList<Producto> itemsCombo;
 	private int id;
 
 	//Método constructor
@@ -15,26 +15,28 @@ public class Combo implements Producto{
 		this.nombreCombo = nombre;
 		this.descuento = descuento;
 		this.id = id;
-		this.itemsCombo = new ArrayList<ProductoMenu>();
+		this.itemsCombo = new ArrayList<Producto>();
 		
 	}
 	
 	//Métodos públicos
-	public void agregarItemACombo(ProductoMenu itemCombo) {
-
-		itemsCombo.add(itemCombo);
+	public void agregarItemACombo(Producto itemCombo) {
+		
+		if (itemCombo != null) { // Diferencia las bebidas
+		itemsCombo.add(itemCombo);}
 
 	}
 
 	public int getPrecio() {
 
-		Iterator<ProductoMenu> iter_products = itemsCombo.iterator();
+		Iterator<Producto> iter_products = itemsCombo.iterator();
 		int precio_total_con_descuento = 0;
 
 		while(iter_products.hasNext()) {
-
-			ProductoMenu producto_actual = iter_products.next();
+			
+			Producto producto_actual = iter_products.next();
 			int precio_producto = producto_actual.getPrecio();
+
 
 			precio_total_con_descuento += (precio_producto - (precio_producto * descuento));
 			}
@@ -52,7 +54,7 @@ public class Combo implements Producto{
 	
 	public String generarTextoFactura() {
 		
-		Iterator<ProductoMenu> iter_products = itemsCombo.iterator();
+		Iterator<Producto> iter_products = itemsCombo.iterator();
 		String factura_combo = "";
 		
 		int precio_combo = getPrecio();
@@ -61,7 +63,7 @@ public class Combo implements Producto{
 
 		while(iter_products.hasNext()) {
 
-			ProductoMenu producto_actual = iter_products.next();
+			Producto producto_actual = iter_products.next();
 			
 			int precio_base = producto_actual.getPrecio();
 			double precio_descuento = precio_base - (precio_base * descuento);

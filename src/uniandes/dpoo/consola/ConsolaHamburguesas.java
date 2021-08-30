@@ -20,9 +20,10 @@ public class ConsolaHamburguesas {
 	public static void main(String[] args) {
 		System.out.println("BIENVENIDO A LA HAMBURGUESERIA 'Hola Mundo'.");
 		ConsolaHamburguesas interfaz = new ConsolaHamburguesas();
-		interfaz.restaurante.cargarInformacionRestaurante(new File("data/ingredientes.txt"),new File("data/menu.txt"), new File("data/combos.txt"));
+		interfaz.restaurante.cargarInformacionRestaurante(new File("data/ingredientes.txt"),new File("data/menu.txt"), new File("data/combos.txt"), new File("data/bebidas.txt"));
 		while (true) {
 			interfaz.mostrarOpciones();
+			@SuppressWarnings("resource")
 			Scanner input = new Scanner(System.in);
 			int opcionSeleccionada = input.nextInt();
 			if (opcionSeleccionada==6) break;
@@ -32,18 +33,19 @@ public class ConsolaHamburguesas {
 
 	//Metodos
 	public void mostrarOpciones() {
-		System.out.println("\n1. Mostrar el menú.");
+		System.out.println("\n1. Mostrar el menú. (Productos y combos)");
 		System.out.println("2. Iniciar un nuevo pedido.");
 		System.out.println("3. Agregar un elemento a un pedido.");
-		System.out.println("4. Cerrar un pedido y guardar la factura.");
-		System.out.println("5. Consultar informacion de un pedido.");
-		System.out.println("6. Salir.");
+		System.out.println("4. Agregar una bebida al pedido.");		
+		System.out.println("5. Cerrar un pedido y guardar la factura.");
+		System.out.println("6. Consultar informacion de un pedido.");
+		System.out.println("7. Salir.");
 		System.out.println("Seleccione una de las anteriores opciones: ");
 		
 	}
 	
 	public void mostrarMenu() {
-		ArrayList<ProductoMenu> menuBase = restaurante.getMenuBase();
+		ArrayList<Producto> menuBase = restaurante.getMenuBase();
 		ArrayList<Combo> combos = restaurante.getCombos();
 		
 		for (int i=0; i<menuBase.size(); i++) {
@@ -58,6 +60,16 @@ public class ConsolaHamburguesas {
 
 		}
 		
+	}
+	
+	public void mostrarBebidas() {
+		ArrayList<Producto> bebidas = restaurante.getBebidas();
+		
+		for (int i=0; i<bebidas.size(); i++) {
+
+			System.out.println("ID:" + bebidas.get(i).getId()+ ") " + bebidas.get(i).getNombre()+" --- $"+bebidas.get(i).getPrecio()+"\n");
+
+		}
 	}
 	
 	public void mostrarIngredientes() {
@@ -116,14 +128,24 @@ public class ConsolaHamburguesas {
 				}}
 				break;
 				
-		case 4: int id_factura = restaurante.getPedidoEnCurso().getIdPedido();
+		case 4: Scanner input_4 = new Scanner (System.in);
+				mostrarBebidas();
+				System.out.println("Ingrese el ID de la bebida que desea agregar a su orden: ");
+				int bebida_pedida_id = input_4.nextInt();
+				String bebida_agregada = restaurante.agregarBebidaAlPedido(bebida_pedida_id);
+				if (bebida_agregada.equals("N/A")) { System.out.println("Ingrese un ID valido.");}
+				else if (bebida_agregada.equals("N/P")) {System.out.println("No se encuentra un pedido activo. !Recuerde iniciar un nuevo pedido!");}
+				else System.out.println("Has agregado la bebida: " + bebida_agregada);
+				break;
+				
+		case 5: int id_factura = restaurante.getPedidoEnCurso().getIdPedido();
 				System.out.println("Felicitaciones, ha completado su orden. Puede buscar su factura con el ID único de pedido #"+ id_factura + ".");
 				restaurante.cerrarYGuardarPedido();
 				break;
 				
-		case 5: Scanner input_4 = new Scanner (System.in);
+		case 6: Scanner input_5 = new Scanner (System.in);
 				System.out.println("Ingrese el ID del pedido que quiere consultar: ");
-				int pedido_id = input_4.nextInt();
+				int pedido_id = input_5.nextInt();
 				String pedido_info=restaurante.informacionPedido(pedido_id);
 				if (pedido_info.equals("N/A")) System.out.println("No se ha encontrado dicho pedido, ingrese una ID valida.");
 				else System.out.println(pedido_info);

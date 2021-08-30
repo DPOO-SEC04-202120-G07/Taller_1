@@ -15,24 +15,29 @@ public class Restaurante {
 	private Pedido pedidoEnCurso = null;
 	private ArrayList<Pedido> pedidos;
 	private HashMap<String,Ingrediente> ingredientes;
-	private HashMap<String,ProductoMenu> menuBase;
+	private HashMap<String,Bebida> bebidas;
+	private HashMap<String,Producto> menuBase;
 	private ArrayList<Combo> combos;
 	
 	private HashMap<Integer,Producto> productosId;
 	private HashMap<Integer, Ingrediente> productosIdIngrediente;
+	private HashMap<Integer, Bebida> productosIdBebida;
 	
 	private int id_asignado;
 	private int id_asignadoIngrediente;
+	private int id_asignadoBebida;
 
 	//Metodo Constructor
 	public Restaurante() {
 
 		this.pedidos = new ArrayList<Pedido>();
 		this.ingredientes = new HashMap<String,Ingrediente>();
-		this.menuBase = new HashMap<String, ProductoMenu>();
+		this.menuBase = new HashMap<String, Producto>();
 		this.combos = new ArrayList<Combo>();
+		this.bebidas = new HashMap<String, Bebida>();
 		this.productosId = new HashMap<Integer,Producto>();
 		this.productosIdIngrediente= new HashMap<Integer, Ingrediente>();
+		this.productosIdBebida= new HashMap<Integer, Bebida>();
 		this.id_asignado=0;
 		this.id_asignadoIngrediente=0;
 		
@@ -65,11 +70,19 @@ public class Restaurante {
 	}
 
 
-	public ArrayList<ProductoMenu> getMenuBase(){
+	public ArrayList<Producto> getMenuBase(){
 
-		return new ArrayList<ProductoMenu>(this.menuBase.values());
+		return new ArrayList<Producto>(this.menuBase.values());
 
 	}
+	
+
+	public ArrayList<Producto> getBebidas(){
+
+		return new ArrayList<Producto>(this.bebidas.values());
+
+	}
+	
 	
 	public ArrayList<Ingrediente> getIngredientes(){
 
@@ -86,10 +99,11 @@ public class Restaurante {
 
 
 
-	public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos) {
+	public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos, File archivoBebidas) {
 
 		this.cargarIngredientes(archivoIngredientes);
 		this.cargarMenu(archivoMenu);
+		this.cargarBebidas(archivoBebidas);
 		this.cargarCombos(archivoCombos);
 
 	}
@@ -121,6 +135,25 @@ public class Restaurante {
 		
 		return nombre_producto;
 	}
+	
+	
+	
+	public String agregarBebidaAlPedido(int id_bebida) {
+		Bebida bebida_agregada = this.productosIdBebida.get(id_bebida);
+		
+		//Excepción producto no existente (id inválido)
+		if (bebida_agregada == null) {return ("N/A");}
+		
+		//Excepción pedido no iniciado.
+		if (this.pedidoEnCurso == null) {return ("N/P");}
+		
+		this.pedidoEnCurso.agregarBebida(bebida_agregada);
+		String nombre_bebida = bebida_agregada.getNombre();
+		
+		return nombre_bebida;
+	}
+	
+	
 	
 	public String eliminarIngrediente(int producto_id, int eliminar) {
 		ProductoAjustado nuevoProducto;
@@ -163,6 +196,12 @@ public class Restaurante {
 		
 	}
 
+	public int asignarIdBebida() {
+		this.id_asignadoBebida += 1;
+		return this.id_asignadoBebida;
+		
+	}
+	
 
 
 
@@ -195,9 +234,9 @@ public class Restaurante {
 			String nombre_producto = data_menu[0];
 			int valor_producto = Integer.parseInt(data_menu[1]);
 
-			ProductoMenu productoMenu = new ProductoMenu(nombre_producto, valor_producto, asignarId());
-			this.menuBase.put(nombre_producto, productoMenu);
-			this.productosId.put(this.id_asignado, productoMenu);
+			Producto producto = new ProductoMenu(nombre_producto, valor_producto, asignarId());
+			this.menuBase.put(nombre_producto, producto);
+			this.productosId.put(this.id_asignado, producto);
 			
 			try {
 				linea=br.readLine();
@@ -242,18 +281,17 @@ public class Restaurante {
 
 			Combo combo = new Combo(nombre_combo, descuento_combo, asignarId());
 
-			//FALTA CARGAR ITEMS AL COMBO
 			for (int i = 2; i < (size_data_combo); i++) {
 
 				String combo_item_name = data_combo[i];
-				ProductoMenu combo_item = menuBase.get(combo_item_name);
-
+				Producto combo_item = menuBase.get(combo_item_name);
 				combo.agregarItemACombo(combo_item);
 
 			}
 
 			this.combos.add(combo);
 			this.productosId.put(this.id_asignado, combo);
+			
 			try {
 				linea=br.readLine();
 			} catch (IOException e) {
@@ -292,6 +330,42 @@ public class Restaurante {
 			Ingrediente ingrediente = new Ingrediente(nombre_ingrediente, precio_ingredient, asignarIdIngrediente());
 			this.ingredientes.put(nombre_ingrediente, ingrediente);
 			this.productosIdIngrediente.put(this.id_asignadoIngrediente, ingrediente);
+			try {
+				linea=br.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+	}
+	
+	
+	private void cargarBebidas(File archivoBebidas) {
+
+		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(archivoBebidas));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		String linea = null;
+		try {
+			linea = br.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+
+		while (linea != null) // Cuando se llegue al final del archivo, linea tendrá el valor null
+		{
+			String[] data_bebida = linea.split(";");
+
+			String nombre_bebida = data_bebida[0];
+			int precio_bebida = Integer.parseInt(data_bebida[1]);
+
+			Bebida bebida = new Bebida(nombre_bebida, precio_bebida, asignarIdBebida());
+			this.bebidas.put(nombre_bebida, bebida);
+			this.productosIdBebida.put(this.id_asignadoBebida, bebida);
 			try {
 				linea=br.readLine();
 			} catch (IOException e) {

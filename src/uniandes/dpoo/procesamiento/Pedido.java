@@ -1,10 +1,8 @@
 package uniandes.dpoo.procesamiento;
 import java.util.ArrayList;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class Pedido {
 	//Atributos
@@ -48,6 +46,11 @@ public class Pedido {
 	public void agregarProducto(Producto nuevoItem) {
 		itemsPedido.add(nuevoItem);		
 	}
+	
+	public void agregarBebida(Bebida nuevoItem) {
+		itemsPedido.add(nuevoItem);		
+	}
+	
 
 	private int getPrecioNetoPedido() {
 		int precioNeto=0;

@@ -42,6 +42,11 @@ public class ProductoAjustado implements Producto{
 		return nombre;
 	}
 	
+	public int getId() {
+		return base.getId();
+		
+	}
+	
 	public String generarTextoFactura() {
 		double iva=this.getPrecio()*0.19;
 		double precioTotal=this.getPrecio()+iva;
