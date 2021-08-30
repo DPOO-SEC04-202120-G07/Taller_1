@@ -47,6 +47,19 @@ public class Restaurante {
 
 	}
 
+	
+	public boolean verificarPedido() {
+		
+		boolean pedido_abierto = true;
+		
+		if (this.pedidoEnCurso == null) {
+			pedido_abierto = false;
+		}
+		
+		return pedido_abierto;
+	}
+	
+	
 	public void cerrarYGuardarPedido() {
 
 		String nombre_factura = "" + pedidoEnCurso.getIdPedido() + ".txt";
