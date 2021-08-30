@@ -73,10 +73,16 @@ public class Pedido {
 	}
 
 	public String generarTextoFactura() {
-		String textoFactura="";
+		String textoFactura=""; //Se inicializa la factura vacía
+		
+		textoFactura += ("Cliente: "+this.nombreCliente+" --- Direccion: "+this.direccionCliente+"\n"+  new String(new char[120]).replace("\0", "-") + "\n" + new String(new char[120]).replace("\0", "-") + "\n");//Se agrega la información del cliente
+		
+		
 		for (int i=0; i<itemsPedido.size();i++) {
-			textoFactura+=itemsPedido.get(i).generarTextoFactura()+"\n";
+			textoFactura+=itemsPedido.get(i).generarTextoFactura()+"\n"; //Se agrega cada item a la factura
 		}
+		
+		textoFactura += new String(new char[120]).replace("\0", "#")  + "\n" +  "| Precio neto: " + getPrecioNetoPedido() + "$" + "| IVA del pedido: " + getPrecioIVAPedido() +"$" +"| Precio total (con IVA): " + getPrecioTotalPedido() +"$" + "\n" + new String(new char[120]).replace("\0", "#"); //Se agrega el valor total de la factura
 
 		return textoFactura;
 	}
@@ -91,8 +97,7 @@ public class Pedido {
 		}
 
 		try {
-			out_file.write("Cliente: "+this.nombreCliente+" --- Direccion: "+this.direccionCliente+"\n"+  new String(new char[120]).replace("\0", "-") + "\n" + new String(new char[120]).replace("\0", "-") + "\n" + this.generarTextoFactura());
-			out_file.write(new String(new char[120]).replace("\0", "#")  + "\n" +  "| Precio neto: " + getPrecioNetoPedido() + "$" + "| IVA del pedido: " + getPrecioIVAPedido() +"$" +"| Precio total (con IVA): " + getPrecioTotalPedido() +"$" + "\n" + new String(new char[120]).replace("\0", "#"));
+			out_file.write(generarTextoFactura());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

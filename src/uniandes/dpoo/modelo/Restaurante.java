@@ -108,11 +108,12 @@ public class Restaurante {
 
 	}
 	
+
 	public String informacionPedido(int id_pedido) {
 		String info="N/A";
 		for (int i=0; i<this.pedidos.size(); i++) {
 			if (pedidos.get(i).getIdPedido()==id_pedido) {
-				info="Cliente: "+pedidos.get(i).getNombreCliente()+" --- Direccion: "+pedidos.get(i).getDireccionCliente()+"\n" +  new String(new char[120]).replace("\0", "-") + "\n" + new String(new char[120]).replace("\0", "-") + "\n" +  pedidos.get(i).generarTextoFactura();
+				info= pedidos.get(i).generarTextoFactura();
 				break;
 			}
 		}
