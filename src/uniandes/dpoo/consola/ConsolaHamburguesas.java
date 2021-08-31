@@ -50,13 +50,13 @@ public class ConsolaHamburguesas {
 		
 		for (int i=0; i<menuBase.size(); i++) {
 
-			System.out.println("ID:" + menuBase.get(i).getId()+ ") " + menuBase.get(i).getNombre()+" --- $"+menuBase.get(i).getPrecio()+"\n");
+			System.out.println("ID:" + menuBase.get(i).getId()+ ") " + menuBase.get(i).getNombre()+" --- $"+menuBase.get(i).getPrecio() +" --- ("+menuBase.get(i).getCalorias()+" Cal)\n");
 
 		}
 		
 		for (int i=0; i<combos.size(); i++) {
 
-			System.out.println("ID:" + combos.get(i).getId()+ ") " + combos.get(i).getNombre()+" --- $"+combos.get(i).getPrecio()+"\n");
+			System.out.println("ID:" + combos.get(i).getId()+ ") " + combos.get(i).getNombre()+" --- $"+" --- ("+combos.get(i).getCalorias()+" Cal)\n");
 
 		}
 		
@@ -67,7 +67,7 @@ public class ConsolaHamburguesas {
 		
 		for (int i=0; i<bebidas.size(); i++) {
 
-			System.out.println("ID:" + bebidas.get(i).getId()+ ") " + bebidas.get(i).getNombre()+" --- $"+bebidas.get(i).getPrecio()+"\n");
+			System.out.println("ID:" + bebidas.get(i).getId()+ ") " + bebidas.get(i).getNombre()+" --- $"+bebidas.get(i).getPrecio()+" --- ("+bebidas.get(i).getCalorias()+" Cal)\n");
 
 		}
 	}
@@ -75,7 +75,7 @@ public class ConsolaHamburguesas {
 	public void mostrarIngredientes() {
 		ArrayList<Ingrediente> ingredientes = restaurante.getIngredientes();
 		for (int i=0; i<ingredientes.size(); i++) {
-			System.out.println("ID:" + ingredientes.get(i).getId()+ ") " + ingredientes.get(i).getNombre()+" --- $"+ingredientes.get(i).getCostoAdicional()+"\n");
+			System.out.println("ID:" + ingredientes.get(i).getId()+ ") " + ingredientes.get(i).getNombre()+" --- $"+ingredientes.get(i).getCostoAdicional()+" --- ("+ingredientes.get(i).getCalorias()+" Cal)\n");
 		}
 	}
 	
@@ -89,6 +89,7 @@ public class ConsolaHamburguesas {
 				
 				else {
 					
+					@SuppressWarnings("resource")
 					Scanner input_2 = new Scanner(System.in);
 					System.out.println("Ingrese su nombre: ");
 					String nombre = input_2.nextLine();

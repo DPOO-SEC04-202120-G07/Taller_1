@@ -5,13 +5,15 @@ public class Ingrediente {
 	private String nombre;
 	private int costoAdicional;
 	private int id;
+	private int calorias;
 
 	//Método constructor
-	public Ingrediente(String nombre, int costoAdicional, int id) {
+	public Ingrediente(String nombre, int costoAdicional, int id, int calorias) {
 		
 		this.nombre = nombre;
 		this.costoAdicional = costoAdicional;
 		this.id=id;
+		this.calorias = calorias;
 	}
 	
 	//Métodos públicos
@@ -28,6 +30,10 @@ public class Ingrediente {
 	public int getCostoAdicional() {
 		
 		return this.costoAdicional;
+	}
+	
+	public int getCalorias() {
+		return this.calorias;
 	}
 	
 	

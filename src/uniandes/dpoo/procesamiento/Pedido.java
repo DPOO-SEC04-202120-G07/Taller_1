@@ -71,6 +71,17 @@ public class Pedido {
 	private int getPrecioTotalPedido() {
 		return getPrecioNetoPedido()+getPrecioIVAPedido();
 	}
+	
+	private int getCaloriasTotalesPedido() {
+		
+		int calorias_totales = 0;
+		
+		for (int i=0; i<itemsPedido.size(); i++) {
+			calorias_totales += itemsPedido.get(i).getCalorias();
+		}
+		
+		return calorias_totales;
+	}
 
 	public String generarTextoFactura() {
 		String textoFactura=""; //Se inicializa la factura vacía
@@ -82,7 +93,7 @@ public class Pedido {
 			textoFactura+=itemsPedido.get(i).generarTextoFactura()+"\n"; //Se agrega cada item a la factura
 		}
 		
-		textoFactura += new String(new char[120]).replace("\0", "#")  + "\n" +  "| Precio neto: " + getPrecioNetoPedido() + "$" + "| IVA del pedido: " + getPrecioIVAPedido() +"$" +"| Precio total (con IVA): " + getPrecioTotalPedido() +"$" + "\n" + new String(new char[120]).replace("\0", "#"); //Se agrega el valor total de la factura
+		textoFactura += new String(new char[120]).replace("\0", "#")  + "\n" + "Calorias Totales: " + getCaloriasTotalesPedido() + "| Precio neto: " + getPrecioNetoPedido() + "$" + "| IVA del pedido: " + getPrecioIVAPedido() +"$" +"| Precio total (con IVA): " + getPrecioTotalPedido() +"$" + "\n" + new String(new char[120]).replace("\0", "#"); //Se agrega el valor total de la factura
 
 		return textoFactura;
 	}

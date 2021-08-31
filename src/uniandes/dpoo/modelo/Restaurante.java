@@ -245,8 +245,9 @@ public class Restaurante {
 
 			String nombre_producto = data_menu[0];
 			int valor_producto = Integer.parseInt(data_menu[1]);
+			int calorias_producto = Integer.parseInt(data_menu[2]);
 
-			Producto producto = new ProductoMenu(nombre_producto, valor_producto, asignarId());
+			Producto producto = new ProductoMenu(nombre_producto, valor_producto, asignarId(), calorias_producto);
 			this.menuBase.put(nombre_producto, producto);
 			this.productosId.put(this.id_asignado, producto);
 			
@@ -338,8 +339,9 @@ public class Restaurante {
 
 			String nombre_ingrediente = data_ingrediente[0];
 			int precio_ingredient = Integer.parseInt(data_ingrediente[1]);
+			int calorias_ingrediente = Integer.parseInt(data_ingrediente[2]);
 
-			Ingrediente ingrediente = new Ingrediente(nombre_ingrediente, precio_ingredient, asignarIdIngrediente());
+			Ingrediente ingrediente = new Ingrediente(nombre_ingrediente, precio_ingredient, asignarIdIngrediente(), calorias_ingrediente);
 			this.ingredientes.put(nombre_ingrediente, ingrediente);
 			this.productosIdIngrediente.put(this.id_asignadoIngrediente, ingrediente);
 			try {
@@ -374,8 +376,9 @@ public class Restaurante {
 
 			String nombre_bebida = data_bebida[0];
 			int precio_bebida = Integer.parseInt(data_bebida[1]);
+			int calorias_bebida = Integer.parseInt(data_bebida[2]);
 
-			Bebida bebida = new Bebida(nombre_bebida, precio_bebida, asignarIdBebida());
+			Bebida bebida = new Bebida(nombre_bebida, precio_bebida, asignarIdBebida(), calorias_bebida);
 			this.bebidas.put(nombre_bebida, bebida);
 			this.productosIdBebida.put(this.id_asignadoBebida, bebida);
 			try {

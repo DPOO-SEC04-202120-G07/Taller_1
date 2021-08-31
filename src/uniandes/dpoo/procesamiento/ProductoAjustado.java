@@ -47,10 +47,26 @@ public class ProductoAjustado implements Producto{
 		
 	}
 	
+	
+	public int getCalorias() {
+		
+		int calorias_ajustadas = base.getCalorias();
+		
+		for (int i=0; i<agregados.size();i++) {
+			calorias_ajustadas += agregados.get(i).getCalorias();
+		}
+		for (int i=0; i<eliminados.size();i++) {
+			calorias_ajustadas -= eliminados.get(i).getCalorias();
+		}
+		return calorias_ajustadas;
+	}
+		
+	
+	
 	public String generarTextoFactura() {
 		double iva=this.getPrecio()*0.19;
 		double precioTotal=this.getPrecio()+iva;
-		return this.getNombre() +"| Precio neto base: "+ this.getPrecio()+"$" +"| IVA (19%): "+iva+"$" +"| Precio total: " +precioTotal + "$" +"\n" + new String(new char[120]).replace("\0", "-") + "\n";
+		return this.getNombre() + " (Calorias: " + getCalorias() + ")| Precio neto base: "+ this.getPrecio()+"$" +"| IVA (19%): "+iva+"$" +"| Precio total: " +precioTotal + "$" +"\n" + new String(new char[120]).replace("\0", "-") + "\n";
 	}
 
 }

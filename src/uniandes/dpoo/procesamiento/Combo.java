@@ -9,6 +9,7 @@ public class Combo implements Producto{
 	private ArrayList<Producto> itemsCombo;
 	private int id;
 
+
 	//Método constructor
 	public Combo(String nombre, double descuento, int id) {
 
@@ -16,8 +17,9 @@ public class Combo implements Producto{
 		this.descuento = descuento;
 		this.id = id;
 		this.itemsCombo = new ArrayList<Producto>();
-		
 	}
+		
+	
 	
 	//Métodos públicos
 	public void agregarItemACombo(Producto itemCombo) {
@@ -76,7 +78,7 @@ public class Combo implements Producto{
 			}
 		
 		
-		factura_combo += ("\n" + this.nombreCombo + "| Precio Combo (neto): " + precio_combo +"$" + "|Iva (19%): " + iva_combo +"$" + "| Precio total: " + precio_combo_total) + "$" + "\n" + new String(new char[120]).replace("\0", "-") + "\n";
+		factura_combo += ("\n" + this.nombreCombo + " (Calorias: " + getCalorias()  + ")| Precio Combo (neto): " + precio_combo +"$" + "|Iva (19%): " + iva_combo +"$" + "| Precio total: " + precio_combo_total) + "$" + "\n" + new String(new char[120]).replace("\0", "-") + "\n";
 		
 		return factura_combo;
 		
@@ -87,6 +89,24 @@ public class Combo implements Producto{
 	public int getId() {
 		return this.id;
 		
+	}
+	
+	
+	public int getCalorias() {
+		
+		Iterator<Producto> iter_products = itemsCombo.iterator();
+		int calorias_totales_combo = 0;
+
+		while(iter_products.hasNext()) {
+			
+			Producto producto_actual = iter_products.next();
+			int calorias_producto = producto_actual.getCalorias();
+
+
+			calorias_totales_combo += calorias_producto;
+			}
+
+		return calorias_totales_combo;
 	}
 
 
