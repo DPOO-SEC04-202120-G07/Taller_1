@@ -6,8 +6,9 @@ public class Combo implements Producto{
 	//Atributos
 	private double descuento;
 	private String nombreCombo;
-	private ArrayList<Producto> itemsCombo;
 	private int id;
+	private ArrayList<Producto> itemsCombo;
+	
 
 	//Método constructor
 	public Combo(String nombre, double descuento, int id) {
