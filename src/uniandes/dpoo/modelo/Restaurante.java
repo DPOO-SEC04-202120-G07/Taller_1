@@ -12,20 +12,23 @@ import java.util.HashMap;
 public class Restaurante {
 
 	//Atributos
+	private int id_asignado;
+	private int id_asignadoIngrediente;
+	private int id_asignadoBebida;
+	
 	private Pedido pedidoEnCurso = null;
+	
 	private ArrayList<Pedido> pedidos;
+	private ArrayList<Combo> combos;
+	
 	private HashMap<String,Ingrediente> ingredientes;
 	private HashMap<String,Bebida> bebidas;
 	private HashMap<String,Producto> menuBase;
-	private ArrayList<Combo> combos;
-	
 	private HashMap<Integer,Producto> productosId;
 	private HashMap<Integer, Ingrediente> productosIdIngrediente;
 	private HashMap<Integer, Bebida> productosIdBebida;
 	
-	private int id_asignado;
-	private int id_asignadoIngrediente;
-	private int id_asignadoBebida;
+	
 
 	//Metodo Constructor
 	public Restaurante() {
@@ -195,6 +198,44 @@ public class Restaurante {
 		this.pedidoEnCurso.modificarUltimoProducto(NuevoProducto);
 		return NuevoProducto.getNombre();
 	}
+	
+	public String verificarPedidoRepetido() {
+
+		ArrayList<Integer> pedidos_repetidos = new ArrayList<Integer>();
+		String mensaje_repetidos = null;
+
+		for (int i = 0; i < this.pedidos.size(); i++)
+		{
+			Pedido iteracion_pedido = pedidos.get(i);
+			
+			int id_pedido_actual = this.pedidoEnCurso.getIdPedido();
+			int id_iteracion_pedido = iteracion_pedido.getIdPedido();
+			
+			ArrayList<Producto> items_pedido_actual = this.pedidoEnCurso.getItemsPedido();
+			ArrayList<Producto> items_iteracion_pedido = iteracion_pedido.getItemsPedido();
+
+			if (items_pedido_actual.containsAll(items_iteracion_pedido) && (id_pedido_actual != id_iteracion_pedido)) {
+
+				int id_pedido_repetido = iteracion_pedido.getIdPedido();
+				pedidos_repetidos.add(id_pedido_repetido);
+			}
+		}
+		
+		if (pedidos_repetidos.size() != 0) {
+			
+			mensaje_repetidos = "Este pedido idéntico ya ha sido ordenado anteriormente bajo el/los ID: ";
+		
+			for (int i: pedidos_repetidos) {
+				mensaje_repetidos += "" + i + " "; 
+			}
+		
+		}
+		
+		this.pedidoEnCurso = null;
+
+		return mensaje_repetidos;
+	}
+
 	
 	public int asignarId() {
 		this.id_asignado += 1;
@@ -391,43 +432,7 @@ public class Restaurante {
 	}
 	
 	
-	public String verificarPedidoRepetido() {
-
-		ArrayList<Integer> pedidos_repetidos = new ArrayList<Integer>();
-		String mensaje_repetidos = null;
-
-		for (int i = 0; i < this.pedidos.size(); i++)
-		{
-			Pedido iteracion_pedido = pedidos.get(i);
-			
-			int id_pedido_actual = this.pedidoEnCurso.getIdPedido();
-			int id_iteracion_pedido = iteracion_pedido.getIdPedido();
-			
-			ArrayList<Producto> items_pedido_actual = this.pedidoEnCurso.getItemsPedido();
-			ArrayList<Producto> items_iteracion_pedido = iteracion_pedido.getItemsPedido();
-
-			if (items_pedido_actual.containsAll(items_iteracion_pedido) && (id_pedido_actual != id_iteracion_pedido)) {
-
-				int id_pedido_repetido = iteracion_pedido.getIdPedido();
-				pedidos_repetidos.add(id_pedido_repetido);
-			}
-		}
-		
-		if (pedidos_repetidos.size() != 0) {
-			
-			mensaje_repetidos = "Este pedido idéntico ya ha sido ordenado anteriormente bajo el/los ID: ";
-		
-			for (int i: pedidos_repetidos) {
-				mensaje_repetidos += "" + i + " "; 
-			}
-		
-		}
-		
-		this.pedidoEnCurso = null;
-
-		return mensaje_repetidos;
-	}
-
+	
 	
 }
 
