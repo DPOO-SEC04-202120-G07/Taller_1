@@ -120,5 +120,9 @@ public class Pedido {
 
 
 	}
+	
+	public ArrayList<Producto> getItemsPedido() {
+		return this.itemsPedido;
+	}
 
 }

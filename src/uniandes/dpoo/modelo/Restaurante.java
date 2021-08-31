@@ -67,11 +67,11 @@ public class Restaurante {
 
 		String nombre_factura = "" + pedidoEnCurso.getIdPedido() + ".txt";
 		File factura = new File(nombre_factura);
-
 		this.pedidoEnCurso.guardarFactura(factura);
-		this.pedidoEnCurso = null;
-
+		
 	}
+	
+	
 
 
 	public Pedido getPedidoEnCurso() {
@@ -391,6 +391,43 @@ public class Restaurante {
 	}
 	
 	
+	public String verificarPedidoRepetido() {
+
+		ArrayList<Integer> pedidos_repetidos = new ArrayList<Integer>();
+		String mensaje_repetidos = null;
+
+		for (int i = 0; i < this.pedidos.size(); i++)
+		{
+			Pedido iteracion_pedido = pedidos.get(i);
+			
+			int id_pedido_actual = this.pedidoEnCurso.getIdPedido();
+			int id_iteracion_pedido = iteracion_pedido.getIdPedido();
+			
+			ArrayList<Producto> items_pedido_actual = this.pedidoEnCurso.getItemsPedido();
+			ArrayList<Producto> items_iteracion_pedido = iteracion_pedido.getItemsPedido();
+
+			if (items_pedido_actual.containsAll(items_iteracion_pedido) && (id_pedido_actual != id_iteracion_pedido)) {
+
+				int id_pedido_repetido = iteracion_pedido.getIdPedido();
+				pedidos_repetidos.add(id_pedido_repetido);
+			}
+		}
+		
+		if (pedidos_repetidos.size() != 0) {
+			
+			mensaje_repetidos = "Este pedido idéntico ya ha sido ordenado anteriormente bajo el/los ID: ";
+		
+			for (int i: pedidos_repetidos) {
+				mensaje_repetidos += "" + i + " "; 
+			}
+		
+		}
+		
+		this.pedidoEnCurso = null;
+
+		return mensaje_repetidos;
+	}
+
 	
 }
 

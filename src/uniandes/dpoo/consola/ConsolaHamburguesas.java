@@ -150,6 +150,11 @@ public class ConsolaHamburguesas {
 		case 5: int id_factura = restaurante.getPedidoEnCurso().getIdPedido();
 				System.out.println("Felicitaciones, ha completado su orden. Puede buscar su factura con el ID único de pedido #"+ id_factura + ".");
 				restaurante.cerrarYGuardarPedido();
+				String pedidos_repetidos = restaurante.verificarPedidoRepetido();
+				if(pedidos_repetidos != null){
+					System.out.println(pedidos_repetidos);
+				}		
+				
 				break;
 				
 		case 6: Scanner input_5 = new Scanner (System.in);
