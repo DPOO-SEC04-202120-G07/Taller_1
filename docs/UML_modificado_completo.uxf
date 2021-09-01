@@ -24,14 +24,14 @@ fontsize=12
 
 
 // This text will be stored with each diagram;  use it for notes.</help_text>
-  <zoom_level>5</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>520</x>
-      <y>85</y>
-      <w>345</w>
-      <h>220</h>
+      <x>464</x>
+      <y>0</y>
+      <w>552</w>
+      <h>352</h>
     </coordinates>
     <panel_attributes>Restaurante
 --
@@ -49,7 +49,7 @@ fontsize=12
 +getBebidas(): ArrayList&lt;Producto&gt;
 +getIngredientes(): ArrayList&lt;Ingrediente&gt;
 +getCombos(): ArrayList&lt;Combo&gt;
-+cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos): void
++cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos, File archivoBebidas): void
 +informacionPedido(int id_pedido): String
 +agregarProductoAlPedido(int id_producto): String
 +agregarBebidaAlPedido(int id_bebida): String
@@ -70,10 +70,10 @@ fontsize=12
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>320</x>
-      <y>330</y>
-      <w>200</w>
-      <h>155</h>
+      <x>144</x>
+      <y>392</y>
+      <w>320</w>
+      <h>248</h>
     </coordinates>
     <panel_attributes>Pedido
 --
@@ -103,10 +103,10 @@ _-numeroPedidos: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>290</x>
-      <y>520</y>
-      <w>165</w>
-      <h>90</h>
+      <x>96</x>
+      <y>696</y>
+      <w>264</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>Combo
 --
@@ -127,10 +127,10 @@ _-numeroPedidos: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>550</y>
-      <w>140</w>
-      <h>75</h>
+      <x>640</x>
+      <y>744</y>
+      <w>224</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>ProductoAjustado
 --
@@ -150,10 +150,10 @@ _-numeroPedidos: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>685</x>
-      <y>425</y>
-      <w>185</w>
-      <h>90</h>
+      <x>728</x>
+      <y>544</y>
+      <w>296</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>ProductoMenu
 --
@@ -174,10 +174,10 @@ _-numeroPedidos: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>790</x>
-      <y>320</y>
-      <w>185</w>
-      <h>85</h>
+      <x>896</x>
+      <y>376</y>
+      <w>296</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>Ingrediente
 --
@@ -197,10 +197,10 @@ _-numeroPedidos: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>575</x>
-      <y>345</y>
-      <w>105</w>
-      <h>65</h>
+      <x>552</x>
+      <y>416</y>
+      <w>168</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Producto
@@ -217,10 +217,10 @@ Producto
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>290</x>
-      <y>110</y>
-      <w>155</w>
-      <h>75</h>
+      <x>96</x>
+      <y>40</y>
+      <w>248</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>ConsolaHamburguesas
 --
@@ -239,10 +239,10 @@ Producto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
-      <y>155</y>
-      <w>90</w>
-      <h>15</h>
+      <x>336</x>
+      <y>112</y>
+      <w>144</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>160.0;10.0;10.0;10.0</additional_attributes>
@@ -250,10 +250,10 @@ Producto
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>380</x>
-      <y>285</y>
-      <w>150</w>
-      <h>55</h>
+      <x>240</x>
+      <y>320</y>
+      <w>240</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
@@ -263,10 +263,10 @@ m1=pedidos</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>745</x>
-      <y>300</y>
-      <w>45</w>
-      <h>135</h>
+      <x>824</x>
+      <y>344</y>
+      <w>72</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
@@ -276,10 +276,10 @@ m1=menuBase</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
-      <y>245</y>
-      <w>85</w>
-      <h>85</h>
+      <x>1008</x>
+      <y>256</y>
+      <w>136</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
@@ -289,10 +289,10 @@ m1=ingredientes</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
-      <y>295</y>
-      <w>100</w>
-      <h>45</h>
+      <x>320</x>
+      <y>336</y>
+      <w>160</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=0..1
@@ -302,10 +302,10 @@ m1=pedidoEnCurso</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
-      <y>275</y>
-      <w>230</w>
-      <h>255</h>
+      <x>112</x>
+      <y>304</y>
+      <w>368</w>
+      <h>408</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
@@ -315,10 +315,10 @@ m1=combos</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
-      <y>430</y>
-      <w>245</w>
-      <h>115</h>
+      <x>352</x>
+      <y>552</y>
+      <w>392</w>
+      <h>184</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
@@ -328,10 +328,10 @@ m1=itemsCombo</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>415</x>
-      <y>405</y>
-      <w>185</w>
-      <h>125</h>
+      <x>296</x>
+      <y>512</y>
+      <w>296</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>350.0;10.0;350.0;200.0;10.0;200.0;10.0;230.0</additional_attributes>
@@ -339,10 +339,10 @@ m1=itemsCombo</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>675</x>
-      <y>375</y>
-      <w>50</w>
-      <h>60</h>
+      <x>712</x>
+      <y>464</y>
+      <w>80</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;80.0;10.0;80.0;100.0</additional_attributes>
@@ -350,10 +350,10 @@ m1=itemsCombo</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>645</x>
-      <y>405</y>
-      <w>15</w>
-      <h>155</h>
+      <x>664</x>
+      <y>512</y>
+      <w>24</w>
+      <h>248</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;290.0</additional_attributes>
@@ -361,10 +361,10 @@ m1=itemsCombo</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>765</x>
-      <y>400</y>
-      <w>170</w>
-      <h>175</h>
+      <x>856</x>
+      <y>504</y>
+      <w>272</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
@@ -374,10 +374,10 @@ m1=agregados</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>765</x>
-      <y>400</y>
-      <w>210</w>
-      <h>185</h>
+      <x>856</x>
+      <y>504</y>
+      <w>336</w>
+      <h>296</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
@@ -387,10 +387,10 @@ m1=eliminados</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>515</x>
-      <y>350</y>
-      <w>70</w>
-      <h>25</h>
+      <x>456</x>
+      <y>424</y>
+      <w>112</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
@@ -400,10 +400,10 @@ m1=itemsPedido</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>710</x>
-      <y>510</y>
-      <w>25</w>
-      <h>50</h>
+      <x>768</x>
+      <y>680</y>
+      <w>40</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=1
@@ -413,10 +413,10 @@ m1=base</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
-      <y>300</y>
-      <w>45</w>
-      <h>55</h>
+      <x>624</x>
+      <y>344</y>
+      <w>72</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
@@ -426,10 +426,10 @@ m1=productosId</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
-      <y>235</y>
-      <w>155</w>
-      <h>95</h>
+      <x>1008</x>
+      <y>240</y>
+      <w>248</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
@@ -439,36 +439,36 @@ m1=productosIdIngrediente</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>250</y>
-      <w>270</w>
-      <h>415</h>
+      <x>40</x>
+      <y>264</y>
+      <w>440</w>
+      <h>664</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
 m1=bebidas</panel_attributes>
-    <additional_attributes>360.0;800.0;10.0;800.0;30.0;10.0;520.0;10.0</additional_attributes>
+    <additional_attributes>370.0;800.0;10.0;800.0;10.0;10.0;530.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>230</x>
-      <y>235</y>
-      <w>300</w>
-      <h>450</h>
+      <x>8</x>
+      <y>240</y>
+      <w>472</w>
+      <h>720</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
 m1=productosIdBebida</panel_attributes>
-    <additional_attributes>420.0;870.0;10.0;870.0;30.0;10.0;580.0;10.0</additional_attributes>
+    <additional_attributes>410.0;870.0;10.0;870.0;10.0;10.0;570.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>440</x>
-      <y>625</y>
-      <w>170</w>
-      <h>85</h>
+      <x>336</x>
+      <y>864</y>
+      <w>272</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>Bebida
 --
@@ -488,10 +488,10 @@ m1=productosIdBebida</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>405</y>
-      <w>90</w>
-      <h>230</h>
+      <x>496</x>
+      <y>512</y>
+      <w>144</w>
+      <h>368</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>160.0;10.0;160.0;260.0;10.0;260.0;10.0;440.0</additional_attributes>
