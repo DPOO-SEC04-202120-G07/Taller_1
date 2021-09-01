@@ -13,16 +13,17 @@ public class Restaurante {
 
 	//Atributos
 	private Pedido pedidoEnCurso = null;
+	private int id_asignado;
+	private int id_asignadoIngrediente;
+	
 	private ArrayList<Pedido> pedidos;
+	private ArrayList<Combo> combos;
 	private HashMap<String,Ingrediente> ingredientes;
 	private HashMap<String,ProductoMenu> menuBase;
-	private ArrayList<Combo> combos;
-	
 	private HashMap<Integer,Producto> productosId;
 	private HashMap<Integer, Ingrediente> productosIdIngrediente;
 	
-	private int id_asignado;
-	private int id_asignadoIngrediente;
+	
 
 	//Metodo Constructor
 	public Restaurante() {
@@ -183,8 +184,6 @@ public class Restaurante {
 
 
 	private void cargarMenu(File archivoMenu) {
-
-
 
 
 		// Abrir el archivo y leerlo línea por línea usando un BufferedReader
