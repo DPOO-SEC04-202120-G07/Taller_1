@@ -31,7 +31,7 @@ fontsize=12
       <x>414</x>
       <y>0</y>
       <w>621</w>
-      <h>396</h>
+      <h>315</h>
     </coordinates>
     <panel_attributes>Restaurante
 --
@@ -65,9 +65,9 @@ fontsize=12
     <id>UMLClass</id>
     <coordinates>
       <x>54</x>
-      <y>441</y>
+      <y>396</y>
       <w>360</w>
-      <h>279</h>
+      <h>234</h>
     </coordinates>
     <panel_attributes>Pedido
 --
@@ -88,7 +88,6 @@ _-numeroPedidos: int_
 -getPrecioIVAPedido(): int
 +generarTextoFactura(): String
 +guardarFactura(File archivo): void
-+getItemsPedido(): ArrayList&lt;Producto&gt;
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -96,9 +95,9 @@ _-numeroPedidos: int_
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>783</y>
+      <y>765</y>
       <w>297</w>
-      <h>162</h>
+      <h>153</h>
     </coordinates>
     <panel_attributes>Combo
 --
@@ -119,9 +118,9 @@ _-numeroPedidos: int_
     <id>UMLClass</id>
     <coordinates>
       <x>612</x>
-      <y>837</y>
-      <w>252</w>
-      <h>135</h>
+      <y>756</y>
+      <w>234</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>ProductoAjustado
 --
@@ -129,7 +128,6 @@ _-numeroPedidos: int_
 +ProductoAjustado(ProductoMenu base)
 +getNombre(): String
 +getPrecio(): int
-+getId(): int
 +generarTextoFactura(): String
 +eliminarIngrediente(Ingrediente eliminar): void
 +agregarIngrediente(Ingrediente agregar): void
@@ -141,9 +139,9 @@ _-numeroPedidos: int_
     <id>UMLClass</id>
     <coordinates>
       <x>711</x>
-      <y>612</y>
-      <w>333</w>
-      <h>162</h>
+      <y>531</y>
+      <w>288</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>ProductoMenu
 --
@@ -163,9 +161,9 @@ _-numeroPedidos: int_
     <id>UMLClass</id>
     <coordinates>
       <x>900</x>
-      <y>423</y>
-      <w>333</w>
-      <h>153</h>
+      <y>369</y>
+      <w>315</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>Ingrediente
 --
@@ -177,7 +175,6 @@ _-numeroPedidos: int_
 +getNombre(): String
 +getId(): int
 +getCostoAdicional(): int
-
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -185,16 +182,15 @@ _-numeroPedidos: int_
     <id>UMLClass</id>
     <coordinates>
       <x>513</x>
-      <y>468</y>
+      <y>396</y>
       <w>189</w>
-      <h>117</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Producto
 --
 --
 +getPrecio(): int
-+getId(): int
 +getNombre(): String
 +generarTextoFactura(): String
 </panel_attributes>
@@ -204,15 +200,14 @@ Producto
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>45</y>
+      <y>108</y>
       <w>279</w>
-      <h>135</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>ConsolaHamburguesas
 --
 -restaurante: Restaurante
 --
-+ConsolaHamburguesas()
 +main(String[] args): void
 +mostrarOpciones(): void
 +mostrarMenu(): void
@@ -225,7 +220,7 @@ Producto
     <id>Relation</id>
     <coordinates>
       <x>270</x>
-      <y>126</y>
+      <y>171</y>
       <w>162</w>
       <h>27</h>
     </coordinates>
@@ -236,20 +231,20 @@ Producto
     <id>Relation</id>
     <coordinates>
       <x>162</x>
-      <y>360</y>
+      <y>279</y>
       <w>270</w>
-      <h>99</h>
+      <h>135</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
 m1=pedidos</panel_attributes>
-    <additional_attributes>10.0;90.0;10.0;10.0;280.0;10.0</additional_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0;280.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>819</x>
-      <y>387</y>
+      <y>306</y>
       <w>81</w>
       <h>243</h>
     </coordinates>
@@ -262,70 +257,70 @@ m1=menuBase</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1026</x>
-      <y>288</y>
+      <y>207</y>
       <w>153</w>
-      <h>153</h>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
 m1=ingredientes</panel_attributes>
-    <additional_attributes>90.0;150.0;90.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>90.0;180.0;90.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>252</x>
-      <y>378</y>
+      <y>297</y>
       <w>180</w>
-      <h>81</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=0..1
 m1=pedidoEnCurso</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0;180.0;10.0</additional_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>18</x>
-      <y>342</y>
+      <y>243</y>
       <w>414</w>
-      <h>459</h>
+      <h>540</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
 m1=combos</panel_attributes>
-    <additional_attributes>10.0;490.0;10.0;10.0;440.0;10.0</additional_attributes>
+    <additional_attributes>10.0;580.0;10.0;10.0;440.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>288</x>
-      <y>621</y>
+      <y>594</y>
       <w>441</w>
-      <h>207</h>
+      <h>270</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
 m1=itemsCombo</panel_attributes>
-    <additional_attributes>470.0;20.0;160.0;20.0;160.0;210.0;10.0;210.0</additional_attributes>
+    <additional_attributes>470.0;20.0;340.0;20.0;220.0;280.0;10.0;280.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>225</x>
-      <y>576</y>
+      <y>495</y>
       <w>333</w>
-      <h>225</h>
+      <h>288</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>350.0;10.0;350.0;200.0;10.0;200.0;10.0;230.0</additional_attributes>
+    <additional_attributes>350.0;10.0;350.0;200.0;10.0;200.0;10.0;300.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>693</x>
-      <y>522</y>
+      <y>441</y>
       <w>90</w>
       <h>108</h>
     </coordinates>
@@ -336,7 +331,7 @@ m1=itemsCombo</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>639</x>
-      <y>576</y>
+      <y>495</y>
       <w>27</w>
       <h>279</h>
     </coordinates>
@@ -346,34 +341,34 @@ m1=itemsCombo</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>855</x>
-      <y>567</y>
-      <w>306</w>
+      <x>837</x>
+      <y>486</y>
+      <w>324</w>
       <h>315</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
 m1=agregados</panel_attributes>
-    <additional_attributes>260.0;10.0;260.0;330.0;10.0;330.0</additional_attributes>
+    <additional_attributes>280.0;10.0;280.0;330.0;10.0;330.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>855</x>
-      <y>567</y>
-      <w>378</w>
+      <x>837</x>
+      <y>486</y>
+      <w>396</w>
       <h>333</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
 m1=eliminados</panel_attributes>
-    <additional_attributes>340.0;10.0;340.0;350.0;10.0;350.0</additional_attributes>
+    <additional_attributes>360.0;10.0;360.0;350.0;10.0;350.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>405</x>
-      <y>477</y>
+      <y>432</y>
       <w>126</w>
       <h>45</h>
     </coordinates>
@@ -386,39 +381,39 @@ m1=itemsPedido</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>756</x>
-      <y>765</y>
+      <y>657</y>
       <w>45</w>
-      <h>90</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=1
 m1=base</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>594</x>
-      <y>387</y>
+      <y>306</y>
       <w>81</w>
-      <h>99</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
 m1=productosId</panel_attributes>
-    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1026</x>
-      <y>270</y>
+      <y>189</y>
       <w>279</w>
-      <h>171</h>
+      <h>198</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=*
 m1=productosIdIngrediente</panel_attributes>
-    <additional_attributes>170.0;170.0;170.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>170.0;200.0;170.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
